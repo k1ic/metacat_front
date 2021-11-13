@@ -140,9 +140,9 @@ export default function Web3ModalProvider({
     }
     provider.on('close', () => resetApp());
     provider.on('accountsChanged', async (accounts: string[]) => {
-      const _address = accounts[0];
-      await state.setState({ address: _address });
-      await getAccountAssets(_address, chainId);
+      const addr = accounts[0];
+      await state.setState({ address: addr });
+      await getAccountAssets(addr, chainId);
     });
     provider.on('chainChanged', async (cid: number) => {
       const id = +cid;

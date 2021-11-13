@@ -1,7 +1,7 @@
 html,
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -24,8 +24,8 @@ a {
 
 .fixed-center {
   position: fixed;
-  left: 0;
   right: 0;
+  left: 0;
 }
 
 @media screen and (min-width: 1280px) {
@@ -114,7 +114,7 @@ a {
   overflow: auto;
   box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
 
-  @apply py-4 px-6 text-white text-sm bg-black rounded-md	leading-5	;
+  @apply py-4 px-6 text-white text-sm bg-black rounded-md	leading-5;
 }
 
 
