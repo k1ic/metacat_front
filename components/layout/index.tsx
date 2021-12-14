@@ -12,6 +12,8 @@ import { NAVIGATION } from '../../common/const';
 // import Logo from './icons/icon-logo';
 import Footer from '../footer';
 
+import style from './index.module.less'
+
 type Props = {
   children: React.ReactNode;
   className?: string;
@@ -39,43 +41,36 @@ export default function Layout({
     <>
       <div className={cn('min-h-screen', 'w-full')}>
         <div
-          className={cn(headerBgCls, 'h-24', {
+          className={cn(headerBgCls, 'h-22 bg-black', {
             'fixed-center': fixed,
           })}
           style={{ zIndex: 1 }}
         >
           {!hideNav && (
-            <header className={cn('main-content h-full flex justify-center items-center')}>
-              <div className="flex flex-grow items-center">
-                <MobileMenu key={router.asPath} />
+            <header className={cn('main-content h-full flex justify-center items-center p-5')}>
+              <div className="flex flex-grow items-center text-white font-bold text-3xl">
                 <Link href="/">
-                  <img className="w-16 h-16 cursor-pointer" src="/images/logo.png" />
+                  METCAT
                 </Link>
               </div>
-              <div className="hidden flex-grow items-center lg:flex ">
-                {NAVIGATION.map(({ name, route }) => (
-                  <Link key={name} href={route}>
-                    <span
-                      className={cn(
-                        'text-xl py-2 px-6 rounded-3xl cursor-pointer hover:underline',
-                        {
-                          'bg-white bg-opacity-20': activeRoute.startsWith(route),
-                          'text-gray-500 text-opacity-70	': activeRoute.startsWith(route),
-                          'text-gray-500': !activeRoute.startsWith(route),
-                        },
-                      )}
-                    >
-                      {t(name)}
-                    </span>
-                  </Link>
-                ))}
-              </div>
               <div className="flex flex-grow justify-end">
-                <SwitchLocale />
-                {extra}
+                <div className="text-lg text-white mx-28">Home</div>
+                <div className="text-lg text-gray-400">Data</div>
               </div>
             </header>
           )}
+          <div className="flex main-content h-88 py-10">
+            <div className='flex items-center' style={{minHeight: "220px"}}>
+              <div className={cn('logo mr-4 bg-white', style.logo)}></div>
+              <div className="sign-mark-word text-6xl text-white font-bold">
+                <div>CATCH DATA</div>
+                <div className="mt-12">CATCH VALUE</div>
+              </div>
+            </div>
+            <div
+              className={cn("image-round bg-white mx-36", style.roundImage)}
+            ></div>
+          </div>
         </div>
 
         <div>

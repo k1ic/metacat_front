@@ -39,6 +39,10 @@ a {
   @apply container px-4 mx-auto sm:container md:container lg:container xl:container 2xl:container md:px-4 sm:px-4;
 }
 
+.page-container{
+  background-color: #111A1B;
+}
+
 .post-content {
   display: grid;
   grid-template-columns:
