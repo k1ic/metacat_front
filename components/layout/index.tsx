@@ -12,7 +12,7 @@ import { NAVIGATION } from '../../common/const';
 // import Logo from './icons/icon-logo';
 import Footer from '../footer';
 
-import style from './index.module.less'
+import style from './index.module.less';
 
 type Props = {
   children: React.ReactNode;
@@ -49,9 +49,7 @@ export default function Layout({
           {!hideNav && (
             <header className={cn('main-content h-full flex justify-center items-center p-5')}>
               <div className="flex flex-grow items-center text-white font-bold text-3xl">
-                <Link href="/">
-                  METCAT
-                </Link>
+                <Link href="/">METCAT</Link>
               </div>
               <div className="flex flex-grow justify-end">
                 <div className="text-lg text-white mx-28">Home</div>
@@ -60,16 +58,14 @@ export default function Layout({
             </header>
           )}
           <div className="flex main-content h-88 py-10">
-            <div className='flex items-center' style={{minHeight: "220px"}}>
+            <div className="flex items-center" style={{ minHeight: '220px' }}>
               <div className={cn('logo mr-4 bg-white', style.logo)}></div>
               <div className="sign-mark-word text-6xl text-white font-bold">
                 <div>CATCH DATA</div>
                 <div className="mt-12">CATCH VALUE</div>
               </div>
             </div>
-            <div
-              className={cn("image-round bg-white mx-36", style.roundImage)}
-            ></div>
+            <div className={cn('image-round bg-white mx-36', style.roundImage)}></div>
           </div>
         </div>
 

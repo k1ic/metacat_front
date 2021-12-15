@@ -1,13 +1,28 @@
-.active{
-  color: #fff;
-  border-bottom: 6px solid #00D0EC;
+.active::after {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  height: 6px;
+  background-color: #00d0ec;
+  content: ' ';
 }
 
-.normal{
-  color: #AAAAAA;
+.normal {
+  color: #aaa;
 }
-.canHover{
-  transform: scale(1.2);
+.tab {
+  position: relative;
   color: #fff;
   cursor: pointer;
+}
+
+.canHover {
+  color: #aaa;
+}
+
+.active,
+.active > .canHover,
+.canHover:hover {
+  color: #fff;
+  font-size: 25px;
 }

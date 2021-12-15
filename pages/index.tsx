@@ -9,31 +9,31 @@ import SecondTab from '../components/tab2';
 
 import style from './index.module.less';
 
+const tabs = [
+  {
+    label: 'Crypto Voxel',
+    icon: '/images/Crypto Voxel.jpg',
+    type: 'voxel',
+  },
+  {
+    label: 'Decentraland',
+    icon: '/images/Decentraland.jpg',
+    type: 'decentraland',
+  },
+];
+
+const tabs2 = [
+  {
+    label: 'Parcel',
+    type: 'parcel',
+  },
+  {
+    label: 'Event',
+    type: 'event',
+  },
+];
+
 export default function Index() {
-  const [tabs, setTabs] = React.useState([
-    {
-      label: 'Crypto Voxel',
-      icon: '/images/Crypto Voxel.jpg',
-      type: 'voxel',
-    },
-    {
-      label: 'Decentraland',
-      icon: '/images/Decentraland.jpg',
-      type: 'decentraland',
-    },
-  ]);
-
-  const [tabs2, setTabs2] = React.useState([
-    {
-      label: 'Parcel',
-      type: 'parcel'
-    },
-    {
-      label: 'Event',
-      type: 'event'
-    },
-  ]);
-
   const [chooseTab, setChooseTab] = React.useState(0);
   const [secTab, setSecTab] = React.useState(0);
 
@@ -44,9 +44,12 @@ export default function Index() {
     [tabs],
   );
 
-  const chooseSecond = React.useCallback((index)=>{
-    setSecTab(index)
-  }, [tabs2])
+  const chooseSecond = React.useCallback(
+    (index) => {
+      setSecTab(index);
+    },
+    [tabs2],
+  );
 
   const meta = {
     title: `Home - ${SITE_NAME}`,
@@ -83,11 +86,14 @@ export default function Index() {
                 <SecondTab
                   label={item.label}
                   key={item.label}
-                  choose={()=>{chooseSecond(index)}}
+                  choose={() => {
+                    chooseSecond(index);
+                  }}
                   isChoose={secTab === index}
                 ></SecondTab>
               );
             })}
+            <div></div>
           </div>
         </div>
       </Layout>
