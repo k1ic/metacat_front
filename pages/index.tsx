@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
@@ -11,7 +11,7 @@ import Card from '../components/card';
 
 import style from './index.module.less';
 
-const tabs = [
+const TAB = [
   {
     label: 'Crypto Voxel',
     icon: '/images/Crypto Voxel.jpg',
@@ -24,7 +24,7 @@ const tabs = [
   },
 ];
 
-const tabs2 = [
+const SUBTAB = [
   {
     label: 'Parcel',
     type: 'parcel',
@@ -36,63 +36,56 @@ const tabs2 = [
 ];
 
 export default function Index() {
-  const [chooseTab, setChooseTab] = React.useState(0);
-  const [secTab, setSecTab] = React.useState(0);
-
-  const chooseOne = React.useCallback(
-    (index) => {
-      setChooseTab(index);
-    },
-    [tabs],
-  );
-
-  const chooseSecond = React.useCallback(
-    (index) => {
-      setSecTab(index);
-    },
-    [tabs2],
-  );
-
   const meta = {
     title: `Home - ${SITE_NAME}`,
     description: META_DESCRIPTION,
   };
+
+  const [tab, setTab] = React.useState(0);
+  const [subTab, setSubTab] = React.useState(0);
+  // const [page, setPage] = React.useState(1);
+
+  // useEffect(() => {
+
+  // }, [tab, subTab]);
+
   const cls = cn('flex-1', style.bottomLine);
+
   return (
     <Page meta={meta}>
       <Layout>
         <div className="tab-list h-28 flex pt-6">
           <div className={cls}></div>
           <div className="main-content flex px-0">
-            {tabs.map((item, index) => {
+            {TAB.map((item, index) => {
               return (
                 <Tab
-                  isChoose={chooseTab === index}
+                  active={tab === index}
                   key={item.label}
                   label={item.label}
                   icon={item.icon}
-                  choose={() => {
-                    chooseOne(index);
+                  onClick={() => {
+                    setTab(index);
                   }}
-                ></Tab>
+                />
               );
             })}
-            <div className={cls}></div>
+            <div className={cls} />
           </div>
-          <div className={cls}></div>
+          <div className={cls} />
         </div>
         <div className="h-96 main-content">
           <div className={cn('flex', style.contentHeader)}>
-            {tabs2.map((item, index) => {
+            {SUBTAB.map((item, index) => {
               return (
                 <SecondTab
                   label={item.label}
                   key={item.label}
-                  choose={() => {
-                    chooseSecond(index);
+                  onClick={() => {
+                    setSubTab(index);
                   }}
-                  isChoose={secTab === index}
-                ></SecondTab>
+                  active={subTab === index}
+                />
               );
             })}
           </div>
