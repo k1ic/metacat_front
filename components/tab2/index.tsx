@@ -6,12 +6,12 @@ import style from './index.module.less';
 
 type Props = {
   label?: string;
-  isChoose?: boolean;
-  choose?: MouseEventHandler<HTMLDivElement>;
+  active?: boolean;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 };
 
-export default function SecondTab({ label, isChoose, choose }: Props) {
-  const cls = isChoose ? style.active : style.normal;
+export default function SecondTab({ label, active, onClick }: Props) {
+  const cls = active ? style.active : style.normal;
   return (
     <div
       className={cn(
@@ -19,7 +19,7 @@ export default function SecondTab({ label, isChoose, choose }: Props) {
         style.tab,
         cls,
       )}
-      onClick={choose}
+      onClick={onClick}
     >
       <div className={style.canHover}>{label}</div>
     </div>

@@ -38,14 +38,14 @@ export default function Index() {
   const [secTab, setSecTab] = React.useState(0);
 
   const chooseOne = React.useCallback(
-    (index) => {
+    index => {
       setChooseTab(index);
     },
     [tabs],
   );
 
   const chooseSecond = React.useCallback(
-    (index) => {
+    index => {
       setSecTab(index);
     },
     [tabs2],
@@ -65,19 +65,19 @@ export default function Index() {
             {tabs.map((item, index) => {
               return (
                 <Tab
-                  isChoose={chooseTab === index}
+                  active={chooseTab === index}
                   key={item.label}
                   label={item.label}
                   icon={item.icon}
-                  choose={() => {
+                  onClick={() => {
                     chooseOne(index);
                   }}
-                ></Tab>
+                />
               );
             })}
-            <div className={cls}></div>
+            <div className={cls} />
           </div>
-          <div className={cls}></div>
+          <div className={cls} />
         </div>
         <div className="h-96 main-content">
           <div className={cn('flex', style.contentHeader)}>
@@ -86,11 +86,11 @@ export default function Index() {
                 <SecondTab
                   label={item.label}
                   key={item.label}
-                  choose={() => {
+                  onClick={() => {
                     chooseSecond(index);
                   }}
-                  isChoose={secTab === index}
-                ></SecondTab>
+                  active={secTab === index}
+                />
               );
             })}
             <div></div>
