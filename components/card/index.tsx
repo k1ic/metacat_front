@@ -46,7 +46,7 @@ export default function Card({
           <div className="text-xl font-semibold truncate flex-1 mr-3" title={name}>
             {name}
           </div>
-          <img src="/images/openC.png" className={style.icon} onClick={jumpToOpenC}></img>
+          <img src="/images/Nomal.png" className={style.icon} onClick={jumpToOpenC}></img>
         </div>
         <div className={cn('text-xs my-3', style.description)}>{description}</div>
       </div>

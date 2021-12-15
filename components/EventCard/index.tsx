@@ -22,7 +22,7 @@ export default function EventCard({ title }: Props) {
       <div className={cn('flex-1 ', style.content)}>
         <div className={cn('flex h-auto justify-between items-center text-white')}>
           <div>
-            <div className={cn('text-xl font-semibold', style.header)}>{title}</div>
+            <div className={cn('text-xl font-semibold truncate', style.header)}>{title}</div>
             <div className={cn('text-base', style.time)}>
               Activity time：2021/12/11/13:20 -- 2021/12/12/14:00
             </div>
