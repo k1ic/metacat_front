@@ -9,6 +9,7 @@ import SecondTab from '../components/tab2';
 import Card from '../components/card';
 
 import style from './index.module.less';
+import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
 
 const TAB = [
   {
@@ -40,13 +41,77 @@ export default function Index() {
     description: META_DESCRIPTION,
   };
 
-  const [tab, setTab] = React.useState(0);
-  const [subTab, setSubTab] = React.useState(0);
-  // const [page, setPage] = React.useState(1);
+  const [loading, setLoading] = React.useState(false);
+
+  const [tabState, setTabState] = React.useState('voxel');
+  const [subTabState, setSubTabState] = React.useState('parcel');
+  const [pageNum, setPageNum] = React.useState(1);
+  const [totalPage, setTotalPage] = React.useState(1);
+  const [noData, setNoData] = React.useState(false);
+  const nextCursor = React.useRef(1);
+
+  const requestData = async ({ tab, subTab, page, query = '', type }) => {
+    let data;
+    if (tab === 'voxel') {
+      if (subTab === 'parcel') {
+        const res = await getCVParcelList(page, 10, query, type);
+        const { parcel_list, total_page } = res.data;
+
+        setTotalPage(total_page);
+
+        data = parcel_list;
+      } else if (subTab === 'event') {
+        const res = await getCVEventList(nextCursor.current, 10);
+        const { cursor, count, event_list } = res.data;
+        nextCursor.current = cursor;
+
+        if (event_list.length === 0) {
+          setNoData(true);
+        } else {
+          setNoData(false);
+        }
+
+        data = event_list;
+      }
+    } else if (tab === 'decentraland') {
+      if (subTab === 'parcel') {
+        const res = await getDCLParcelList(page, 10, query, type);
+        const { parcel_list, total_page } = res.data;
+
+        setTotalPage(total_page);
+
+        data = parcel_list;
+      } else if (subTab === 'event') {
+        const res = await getDCLEventList(nextCursor.current, 10);
+        const { cursor, event_list } = res.data;
+        nextCursor.current = cursor;
+
+        if (event_list.length === 0) {
+          setNoData(true);
+        } else {
+          setNoData(false);
+        }
+
+        data = event_list;
+      }
+    }
+
+    return data;
+  };
 
   // useEffect(() => {
 
   // }, [tab, subTab]);
+
+  const onTabChange = async (tab) => {
+    setTabState(tab);
+    const data = requestData({ tab, subTab: subTabState, page: 1, query: '', type: '' });
+  };
+
+  const onSubTabChange = async (subTab) => {
+    setSubTabState(subTab);
+    const data = requestData({ tab: tabState, subTab, page: 1, query: '', type: '' });
+  };
 
   const cls = cn('flex-1', style.bottomLine);
 
@@ -59,12 +124,12 @@ export default function Index() {
             {TAB.map((item, index) => {
               return (
                 <Tab
-                  active={tab === index}
+                  active={tabState === item.type}
                   key={item.label}
                   label={item.label}
                   icon={item.icon}
                   onClick={() => {
-                    setTab(index);
+                    onTabChange(item.type);
                   }}
                 />
               );
@@ -81,9 +146,9 @@ export default function Index() {
                   label={item.label}
                   key={item.label}
                   onClick={() => {
-                    setSubTab(index);
+                    onSubTabChange(item.label);
                   }}
-                  active={subTab === index}
+                  active={subTabState === item.label}
                 />
               );
             })}
