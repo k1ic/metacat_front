@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
@@ -9,7 +9,7 @@ import SecondTab from '../components/tab2';
 
 import style from './index.module.less';
 
-const tabs = [
+const TAB = [
   {
     label: 'Crypto Voxel',
     icon: '/images/Crypto Voxel.jpg',
@@ -22,7 +22,7 @@ const tabs = [
   },
 ];
 
-const tabs2 = [
+const SUBTAB = [
   {
     label: 'Parcel',
     type: 'parcel',
@@ -41,6 +41,11 @@ export default function Index() {
 
   const [tab, setTab] = React.useState(0);
   const [subTab, setSubTab] = React.useState(0);
+  // const [page, setPage] = React.useState(1);
+
+  // useEffect(() => {
+
+  // }, [tab, subTab]);
 
   const cls = cn('flex-1', style.bottomLine);
 
@@ -50,7 +55,7 @@ export default function Index() {
         <div className="tab-list h-28 flex pt-6">
           <div className={cls}></div>
           <div className="main-content flex px-0">
-            {tabs.map((item, index) => {
+            {TAB.map((item, index) => {
               return (
                 <Tab
                   active={tab === index}
@@ -69,7 +74,7 @@ export default function Index() {
         </div>
         <div className="h-96 main-content">
           <div className={cn('flex', style.contentHeader)}>
-            {tabs2.map((item, index) => {
+            {SUBTAB.map((item, index) => {
               return (
                 <SecondTab
                   label={item.label}
