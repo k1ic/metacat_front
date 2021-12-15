@@ -74,5 +74,6 @@ module.exports = {
     'global-require': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'prefer-object-spread': 'warn',
+    camelcase: 'off',
   },
 };
