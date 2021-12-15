@@ -34,28 +34,16 @@ const tabs2 = [
 ];
 
 export default function Index() {
-  const [chooseTab, setChooseTab] = React.useState(0);
-  const [secTab, setSecTab] = React.useState(0);
-
-  const chooseOne = React.useCallback(
-    index => {
-      setChooseTab(index);
-    },
-    [tabs],
-  );
-
-  const chooseSecond = React.useCallback(
-    index => {
-      setSecTab(index);
-    },
-    [tabs2],
-  );
-
   const meta = {
     title: `Home - ${SITE_NAME}`,
     description: META_DESCRIPTION,
   };
+
+  const [tab, setTab] = React.useState(0);
+  const [subTab, setSubTab] = React.useState(0);
+
   const cls = cn('flex-1', style.bottomLine);
+
   return (
     <Page meta={meta}>
       <Layout>
@@ -65,12 +53,12 @@ export default function Index() {
             {tabs.map((item, index) => {
               return (
                 <Tab
-                  active={chooseTab === index}
+                  active={tab === index}
                   key={item.label}
                   label={item.label}
                   icon={item.icon}
                   onClick={() => {
-                    chooseOne(index);
+                    setTab(index);
                   }}
                 />
               );
@@ -87,9 +75,9 @@ export default function Index() {
                   label={item.label}
                   key={item.label}
                   onClick={() => {
-                    chooseSecond(index);
+                    setSubTab(index);
                   }}
-                  active={secTab === index}
+                  active={subTab === index}
                 />
               );
             })}
