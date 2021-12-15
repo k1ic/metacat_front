@@ -23,13 +23,13 @@ export default function Card({
   const jumpToOpenC = React.useCallback(
     (event) => {
       event.stopPropagation();
-      window.location.href = openseaUrl;
+      window.open(openseaUrl);
     },
     [openseaUrl],
   );
 
   const jumpToParcel = React.useCallback(() => {
-    window.location.href = parcelPageUrl;
+    window.open(parcelPageUrl);
   }, [parcelPageUrl]);
 
   return (

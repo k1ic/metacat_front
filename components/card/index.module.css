@@ -30,11 +30,11 @@
 }
 
 .icon:hover{
-  filter: brightness(150%);
+  filter: brightness(125%);
 }
 
 .icon:active{
-  filter: brightness(50%);
+  filter: brightness(75%);
 }
 
 .tag {

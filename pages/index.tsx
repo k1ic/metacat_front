@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
@@ -6,7 +6,6 @@ import { SITE_NAME, META_DESCRIPTION } from '../common/const';
 
 import Tab from '../components/tab';
 import SecondTab from '../components/tab2';
-import EventCard from '../components/EventCard';
 import Card from '../components/card';
 
 import style from './index.module.less';
@@ -90,7 +89,7 @@ export default function Index() {
             })}
           </div>
           <div className="mt-8">
-            <EventCard title="SuperDelicious"></EventCard>
+            {/* <EventCard title="SuperDelicious"></EventCard> */}
             <Card
               coverImgUrl="https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg"
               name="SuperDelicious"
