@@ -29,6 +29,14 @@
   border-radius: 20px;
 }
 
+.icon:hover{
+  filter: brightness(150%);
+}
+
+.icon:active{
+  filter: brightness(50%);
+}
+
 .tag {
   position: absolute;
   height: 32px;
