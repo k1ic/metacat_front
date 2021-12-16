@@ -43,6 +43,22 @@ a {
   background-color: #111A1B;
 }
 
+.swiper-pagination-bullet {
+  width: 20px !important;
+  height: 4px !important;
+  display: inline-block !important;
+  background: #fff !important;
+  border-radius: 0 !important;
+}
+
+.swiper-pagination-bullet:hover{
+  background: #fff !important;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+  bottom: 0px !important;
+}
+
 .post-content {
   display: grid;
   grid-template-columns:

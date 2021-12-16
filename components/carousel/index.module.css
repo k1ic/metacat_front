@@ -1,0 +1,46 @@
+.swiper{
+  position: relative;
+}
+.img{
+  height: 180px;
+}
+.icon{
+  width: 18px;
+  height: 18px;
+}
+.slide{
+  position:relative;
+  background-color: rgb(4, 46, 46);
+}
+.title{
+  height: 79px;
+  position:absolute;
+  bottom: 0px;
+  background-color: rgba(0, 208, 236, 0.2);
+}
+.perbtn{
+  left: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.nextbtn{
+  right: 0;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.btn{
+  width: 30px;
+  height: 30px;
+  top: 75px;
+  position: absolute;
+  background-color: rgba(17, 26, 27, 0.5);
+  z-index: 100;
+  color: #fff;
+}
+.btn:hover{
+  cursor: pointer;
+  filter: brightness(125%);
+}
+.btn:active{
+  filter: brightness(75%);
+}

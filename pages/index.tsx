@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
@@ -7,6 +8,8 @@ import { SITE_NAME, META_DESCRIPTION } from '../common/const';
 import Tab from '../components/tab';
 import SecondTab from '../components/tab2';
 import Card from '../components/card';
+import SwiperTag from '../components/swiper-tag';
+import PagiNation from '../components/pagination';
 
 import style from './index.module.less';
 import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
@@ -33,6 +36,33 @@ const SUBTAB = [
     label: 'Event',
     type: 'event',
   },
+];
+
+const TAGS = [
+  { name: 'all', value: 6554 },
+  { name: 'gallery', value: 419 },
+  { name: 'MVB', value: 130 },
+  { name: 'tower', value: 74 },
+  { name: 'HQ', value: 71 },
+  { name: 'house', value: 60 },
+  { name: 'club', value: 53 },
+  { name: 'museum', value: 40 },
+  { name: 'garden', value: 35 },
+  { name: 'temple', value: 32 },
+  { name: 'shop', value: 28 },
+  { name: 'other', value: 5612 },
+  { name: 'all', value: 6554 },
+  { name: 'gallery', value: 419 },
+  { name: 'MVB', value: 130 },
+  { name: 'tower', value: 74 },
+  { name: 'HQ', value: 71 },
+  { name: 'house', value: 60 },
+  { name: 'club', value: 53 },
+  { name: 'museum', value: 40 },
+  { name: 'garden', value: 35 },
+  { name: 'temple', value: 32 },
+  { name: 'shop', value: 28 },
+  { name: 'other', value: 5612 },
 ];
 
 export default function Index() {
@@ -138,7 +168,7 @@ export default function Index() {
           </div>
           <div className={cls} />
         </div>
-        <div className="h-96 main-content">
+        <div className="main-content">
           <div className={cn('flex', style.contentHeader)}>
             {SUBTAB.map((item, index) => {
               return (
@@ -154,6 +184,7 @@ export default function Index() {
             })}
           </div>
           <div className="mt-8">
+            <SwiperTag tags={TAGS}></SwiperTag>
             {/* <EventCard title="SuperDelicious"></EventCard> */}
             <Card
               coverImgUrl="https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg"
@@ -162,6 +193,7 @@ export default function Index() {
               parcelPageUrl="https://www.cryptovoxels.com/parcels/4375"
               openseaUrl="https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375"
             ></Card>
+            <PagiNation total={50} pageNumber={0} pageSize={5}></PagiNation>
           </div>
         </div>
       </Layout>

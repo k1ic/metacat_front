@@ -5150,6 +5150,13 @@
   "resolved" "https://registry.npm.taobao.org/dom-walk/download/dom-walk-0.1.2.tgz"
   "version" "0.1.2"
 
+"dom7@^4.0.2":
+  "integrity" "sha512-Ji4t3Y/vNQg6Q9bR+Syx6Td8qiq8116LE9h4OzbPuxdxK7DyyX7i8EXkYgBX6+EiX6+oYXDTH5BSN29G/n4jug=="
+  "resolved" "https://registry.npmmirror.com/dom7/download/dom7-4.0.2.tgz"
+  "version" "4.0.2"
+  dependencies:
+    "ssr-window" "^4.0.0"
+
 "domain-browser@^1.1.1":
   "integrity" "sha1-PTH1AZGmdJ3RN1p/Ui6CPULlTto="
   "resolved" "https://registry.nlark.com/domain-browser/download/domain-browser-1.2.0.tgz"
@@ -5905,6 +5912,7 @@
     "setimmediate" "^1.0.5"
 
 "ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
+  "integrity" "sha512-qs8G5KwnIO/thOQjv1RvR/4oiTsy6IaCsN+ory5dbiqFXz8sd239aWJH0wmsVNPimL5X1KzQheUpi6xAo6FU4w=="
   "resolved" "git+ssh://git@github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
   "version" "0.6.8"
   dependencies:
@@ -9857,7 +9865,7 @@
     "is-fn" "^1.0.0"
     "set-immediate-shim" "^1.0.1"
 
-"prop-types@^15.6.2", "prop-types@^15.7.2":
+"prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha1-UsQedbjIfnK52TYOAga5ncv/psU="
   "resolved" "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -10165,6 +10173,13 @@
   "resolved" "https://registry.nlark.com/react-lines-ellipsis/download/react-lines-ellipsis-0.15.0.tgz"
   "version" "0.15.0"
 
+"react-paginate@^8.1.0":
+  "integrity" "sha512-XK8cgcX8Zk4De6F4Iozd91a2xm/U+mdD4SB5k4xcBabqZj86U20N7kMiMzOFk1AEGCj6Kg1374xXK03dz7BTRA=="
+  "resolved" "https://registry.npmmirror.com/react-paginate/download/react-paginate-8.1.0.tgz"
+  "version" "8.1.0"
+  dependencies:
+    "prop-types" "^15.6.1"
+
 "react-refresh@0.8.3":
   "integrity" "sha1-ch1GV2ctQAxePHXQY8SoX7LV1o8="
   "resolved" "https://registry.npmmirror.com/react-refresh/download/react-refresh-0.8.3.tgz"
@@ -10187,7 +10202,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.0 || 17.x", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16", "react@>=16.0.0", "react@>=16.6.0", "react@>16.8.0", "react@17.0.2", "react@17.x":
+"react@*", "react@^16 || ^17", "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.0 || 17.x", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16", "react@>=16.0.0", "react@>=16.6.0", "react@>16.8.0", "react@17.0.2", "react@17.x":
   "integrity" "sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://registry.npmmirror.com/react/download/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -11248,6 +11263,11 @@
     "safer-buffer" "^2.0.2"
     "tweetnacl" "~0.14.0"
 
+"ssr-window@^4.0.0", "ssr-window@^4.0.2":
+  "integrity" "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
+  "resolved" "https://registry.npmmirror.com/ssr-window/download/ssr-window-4.0.2.tgz"
+  "version" "4.0.2"
+
 "stacktrace-parser@0.1.10":
   "integrity" "sha1-KfsMrk4NC4UVWHlAKFehY562BRo="
   "resolved" "https://registry.npm.taobao.org/stacktrace-parser/download/stacktrace-parser-0.1.10.tgz"
@@ -11779,6 +11799,14 @@
     "setimmediate" "^1.0.5"
     "tar" "^4.0.2"
     "xhr-request" "^1.0.1"
+
+"swiper@^7.3.3":
+  "integrity" "sha512-Y6kjNI3MhqkLPOf01AZwXMxULMeFDEavArDyVKbOlBLhz+h3hj4vIHwbDUwI0k5iVH7VYNE67jWLsQmoKjuaVA=="
+  "resolved" "https://registry.npmmirror.com/swiper/download/swiper-7.3.3.tgz"
+  "version" "7.3.3"
+  dependencies:
+    "dom7" "^4.0.2"
+    "ssr-window" "^4.0.2"
 
 "table@^5.0.0":
   "integrity" "sha1-EpLRlQDOP4YFOwXw6Ofko7shB54="
