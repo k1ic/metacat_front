@@ -1,9 +1,14 @@
+.swiper{
+  margin: 0px !important;
+}
+
 .slide {
   width: auto !important;
   color: rgba(221, 221, 221, 0.5);
   cursor: pointer;
   font-weight: 400;
 }
+.active,
 .slide:hover,
 .slide:active {
   background: rgba(0, 208, 236, 0.1);
@@ -26,12 +31,14 @@
   height: 44px;
   background: linear-gradient(270deg, #0f191b 4.81%, rgba(15, 25, 27, 0) 150.96%);
   right: 0;
+  cursor: pointer;
 }
 
 .per {
   width: 90px;
   height: 44px;
   background: linear-gradient(90deg, #0f191b 4.81%, rgba(15, 25, 27, 0) 150.96%);
+  cursor: pointer;
 }
 
 .icon {

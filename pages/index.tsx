@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
@@ -10,6 +9,7 @@ import SecondTab from '../components/tab2';
 import Card from '../components/card';
 import SwiperTag from '../components/swiper-tag';
 import PagiNation from '../components/pagination';
+import Search from '../components/search';
 
 import style from './index.module.less';
 import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
@@ -39,18 +39,6 @@ const SUBTAB = [
 ];
 
 const TAGS = [
-  { name: 'all', value: 6554 },
-  { name: 'gallery', value: 419 },
-  { name: 'MVB', value: 130 },
-  { name: 'tower', value: 74 },
-  { name: 'HQ', value: 71 },
-  { name: 'house', value: 60 },
-  { name: 'club', value: 53 },
-  { name: 'museum', value: 40 },
-  { name: 'garden', value: 35 },
-  { name: 'temple', value: 32 },
-  { name: 'shop', value: 28 },
-  { name: 'other', value: 5612 },
   { name: 'all', value: 6554 },
   { name: 'gallery', value: 419 },
   { name: 'MVB', value: 130 },
@@ -169,19 +157,22 @@ export default function Index() {
           <div className={cls} />
         </div>
         <div className="main-content">
-          <div className={cn('flex', style.contentHeader)}>
-            {SUBTAB.map((item, index) => {
-              return (
-                <SecondTab
-                  label={item.label}
-                  key={item.label}
-                  onClick={() => {
-                    onSubTabChange(item.label);
-                  }}
-                  active={subTabState === item.label}
-                />
-              );
-            })}
+          <div className={cn('flex justify-between items-center', style.contentHeader)}>
+            <div className="flex">
+              {SUBTAB.map((item, index) => {
+                return (
+                  <SecondTab
+                    label={item.label}
+                    key={item.label}
+                    onClick={() => {
+                      onSubTabChange(item.label);
+                    }}
+                    active={subTabState === item.label}
+                  />
+                );
+              })}
+            </div>
+            <Search></Search>
           </div>
           <div className="mt-8">
             <SwiperTag tags={TAGS}></SwiperTag>
@@ -193,7 +184,14 @@ export default function Index() {
               parcelPageUrl="https://www.cryptovoxels.com/parcels/4375"
               openseaUrl="https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375"
             ></Card>
-            <PagiNation total={50} pageNumber={0} pageSize={5}></PagiNation>
+            <PagiNation
+              total={50}
+              pageNumber={0}
+              pageSize={5}
+              pageChange={(e) => {
+                console.log(e);
+              }}
+            ></PagiNation>
           </div>
         </div>
       </Layout>

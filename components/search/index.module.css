@@ -1,0 +1,89 @@
+.search{
+
+}
+.search>input{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 208, 236, 0.1);
+  border: 0.5px solid #00D0EC;
+  box-sizing: border-box;
+  caret-color: #00D0EC;
+  outline: black;
+  color: #fff;
+  padding: 0 10px;
+}
+.searchContainer{
+  display: block;
+  width: 320px;
+  height: 44px;
+  animation-name: ani2;
+  animation-duration: .2s;
+}
+
+/* 向此元素应用动画效果 */
+.toggle {
+  width: 0px !important;
+  display: none;
+  animation-name: ani1;
+  animation-duration: .2s;
+}
+
+@keyframes ani1 {
+  from {width: 320px;}
+  to {width: 0px; display: none}
+}
+
+@keyframes ani2 {
+  from {width: 0px;}
+  to {display: block; width: 320px}
+}
+
+.close{
+  position:absolute;
+  right: 10px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.close:hover{
+  filter: brightness(125%);
+}
+.close:active{
+  filter: brightness(75%);
+}
+
+.search>input::-webkit-search-cancel-button{
+  display: none;
+}
+
+.searchbtn{
+  width: 110px;
+  height: 44px;
+  color: rgba(153, 153, 153, 1);
+  background: rgba(0, 208, 236, .1);
+  cursor: pointer;
+}
+
+.searchbtn:hover{
+  color: rgba(17, 26, 27, 1);
+  background: rgba(27, 241, 255, 1);
+}
+.active{
+  color: rgba(17, 26, 27, 1);
+  background: rgba(0, 208, 236, 1)
+}
+.searchbtn:active{
+  background: #00ABC2;
+}
+
+.searchIcon{
+  width: 30px;
+  height: 30px;
+  filter: contrast(0.5);
+}
+
+.active>.searchIcon ,.searchbtn:hover>.searchIcon,.searchbtn:active>.searchIcon{
+  filter: none;
+}

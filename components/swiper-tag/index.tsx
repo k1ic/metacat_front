@@ -18,10 +18,24 @@ type tag = {
 
 type Props = {
   tags: Array<tag>;
+  label?: string;
+  onActive?: (label) => void;
 };
 
-export default function SwiperTag({ tags }: Props) {
+export default function SwiperTag({ tags, label, onActive }: Props) {
   const [percent, setPercent] = React.useState(0);
+  const [activeLabel, setActiveLabel] = React.useState(label || tags[0].name);
+
+  const activeTag = React.useCallback(
+    (item) => {
+      setActiveLabel(item.name);
+      if (onActive) {
+        onActive(item.name);
+      }
+    },
+    [null],
+  );
+
   return (
     <div className="flex justify-between items-center relative">
       <div
@@ -39,9 +53,7 @@ export default function SwiperTag({ tags }: Props) {
         modules={[Navigation]}
         spaceBetween={1}
         slidesPerView="auto"
-        onSlideChange={(e) => {
-          console.log(e);
-        }}
+        className={styles.swiper}
         navigation={{
           prevEl: '.per',
           nextEl: '.next',
@@ -53,10 +65,17 @@ export default function SwiperTag({ tags }: Props) {
         {tags.map((item, index) => {
           return (
             <SwiperSlide
-              className={cn('box-border w-12 p-2 font-semibold text-white', styles.slide)}
+              className={cn(
+                'box-border w-12 p-2 font-semibold text-white',
+                item.name === activeLabel ? styles.active : null,
+                styles.slide,
+              )}
               key={index}
+              onClick={() => {
+                activeTag(item);
+              }}
             >
-              <span>{item.name}</span>
+              <span className="mr-1">{item.name}</span>
               <span>{item.value}</span>
             </SwiperSlide>
           );
