@@ -51,7 +51,7 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
   );
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center mb-7">
       <ReactPaginate
         className="flex items-center"
         pageClassName={baseCls}

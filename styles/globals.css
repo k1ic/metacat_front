@@ -36,7 +36,9 @@ a {
 }
 
 .main-content {
-  @apply container px-4 mx-auto sm:container md:container lg:container xl:container 2xl:container md:px-4 sm:px-4;
+  /* @apply container px-4 mx-auto sm:container md:container lg:container xl:container 2xl:container md:px-4 sm:px-4; */
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .page-container{
