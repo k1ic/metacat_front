@@ -176,14 +176,16 @@ export default function Index() {
           </div>
           <div className="mt-8">
             <SwiperTag tags={TAGS}></SwiperTag>
-            {/* <EventCard title="SuperDelicious"></EventCard> */}
-            <Card
-              coverImgUrl="https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg"
-              name="SuperDelicious"
-              description="Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco"
-              parcelPageUrl="https://www.cryptovoxels.com/parcels/4375"
-              openseaUrl="https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375"
-            ></Card>
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
+              <Card
+                coverImgUrl="https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg"
+                name="SuperDelicious"
+                type="other"
+                description="Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco"
+                parcelPageUrl="https://www.cryptovoxels.com/parcels/4375"
+                openseaUrl="https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375"
+              ></Card>
+            </div>
             <PagiNation
               total={50}
               pageNumber={0}
