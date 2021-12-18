@@ -19,10 +19,11 @@ type tag = {
 type Props = {
   tags: Array<tag>;
   label?: string;
+  className?: string;
   onActive?: (label) => void;
 };
 
-export default function SwiperTag({ tags, label, onActive }: Props) {
+export default function SwiperTag({ tags, label, className, onActive }: Props) {
   const [percent, setPercent] = React.useState(0);
   const [activeLabel, setActiveLabel] = React.useState(label || tags[0].name);
 
@@ -37,7 +38,7 @@ export default function SwiperTag({ tags, label, onActive }: Props) {
   );
 
   return (
-    <div className="flex justify-between items-center relative">
+    <div className={cn('flex justify-between items-center relative w-full', className)}>
       <div
         className={cn(
           'per absolute z-50 flex justify-start items-center',
@@ -53,7 +54,7 @@ export default function SwiperTag({ tags, label, onActive }: Props) {
         modules={[Navigation]}
         spaceBetween={1}
         slidesPerView="auto"
-        className={styles.swiper}
+        className={cn('w-full', styles.swiper)}
         navigation={{
           prevEl: '.per',
           nextEl: '.next',

@@ -45,3 +45,10 @@
   width: 20px;
   height: 20px;
 }
+
+.icon:hover{
+  filter: brightness(125%);
+}
+.icon:active{
+  filter: brightness(75%);
+}
