@@ -29,12 +29,12 @@ export default function PostGrid({ events = [], loadMore, hasMore, className }: 
       dataLength={events.length}
       next={loadMore}
       hasMore={hasMore}
-      loader={<></>}
+      loader={<div>Loading</div>}
       className={cls}
       style={{ overflow: 'initial' }}
     >
       {events.map((ev, idx) => (
-        <EventCard className="mb-7" {...ev} key={ev.name} />
+        <EventCard className="mb-7" {...ev} key={idx} />
       ))}
     </InfiniteScroll>
   );
