@@ -133,7 +133,7 @@ const CARDS = [
 ];
 // test data end
 
-export default function Index() {
+export default function Index(props) {
   const meta = {
     title: `Home - ${SITE_NAME}`,
     description: META_DESCRIPTION,
@@ -141,13 +141,14 @@ export default function Index() {
 
   const [loading, setLoading] = React.useState(false);
 
-  const [tabState, setTabState] = React.useState('voxel');
-  const [subTabState, setSubTabState] = React.useState('parcel');
+  const [tabState, setTabState] = React.useState(props.query.tab || 'voxel');
+  const [subTabState, setSubTabState] = React.useState(props.query.subTab || 'parcel');
   const [pageNum, setPageNum] = React.useState(1);
   const [totalPage, setTotalPage] = React.useState(1);
   const [noData, setNoData] = React.useState(false);
-  const [searchText, setSearchText] = React.useState('');
-  const [typeState, setTypeState] = React.useState('');
+  const [searchText, setSearchText] = React.useState(props.query.search || '');
+  const [typeState, setTypeState] = React.useState(props.query.type || 'all');
+  const [typeList, setTypeList] = React.useState([]);
   const nextCursor = React.useRef(1);
 
   const [dataSource, setDataSource] = React.useState([]);
@@ -156,13 +157,19 @@ export default function Index() {
 
   const requestData = async ({ tab, subTab, page, query = '', type }): Promise<any[]> => {
     let data;
+
     if (tab === 'voxel') {
       if (subTab === 'parcel') {
         const res = await getCVParcelList(page, 10, query, type);
-        const { parcel_list, total_page } = res.data;
+        const { parcel_list, total_page, type_total } = res.data;
+
+        const typeArray = Object.keys(type_total).map((key) => {
+          const value = type_total[key];
+          return { name: key, value };
+        });
 
         setTotalPage(total_page);
-
+        setTypeList(typeArray);
         data = parcel_list;
       } else if (subTab === 'event') {
         const res = await getCVEventList(nextCursor.current, 10);
@@ -180,10 +187,15 @@ export default function Index() {
     } else if (tab === 'decentraland') {
       if (subTab === 'parcel') {
         const res = await getDCLParcelList(page, 10, query, type);
-        const { parcel_list, total_page } = res.data;
+        const { parcel_list, total_page, type_total } = res.data;
 
         setTotalPage(total_page);
+        const typeArray = Object.keys(type_total).map((key) => {
+          const value = type_total[key];
+          return { [key]: value };
+        });
 
+        setTypeList(typeArray);
         data = parcel_list;
       } else if (subTab === 'event') {
         const res = await getDCLEventList(nextCursor.current, 10);
@@ -253,9 +265,25 @@ export default function Index() {
     [pageNumber, hasMore, tabState, subTabState, searchText, typeState, dataSource],
   );
 
+  const init = React.useCallback(async () => {
+    const data = await requestData({
+      tab: tabState,
+      subTab: subTabState,
+      page: 1,
+      query: searchText,
+      type: typeState,
+    });
+    setDataSource(data);
+  }, [props.query]);
+
+  React.useEffect(() => {
+    init();
+  }, [null]);
+
   const cls = cn('flex-1', style.bottomLine);
 
   console.log(dataSource, pageNumber, hasMore);
+  console.log('typeList', typeList);
   return (
     <Page meta={meta}>
       <Layout>
@@ -300,10 +328,10 @@ export default function Index() {
           <div className="mt-8">
             {subTabState === 'parcel' ? (
               <>
-                <SwiperTag onActive={onTypeChangeHandler} tags={TAGS}></SwiperTag>
+                <SwiperTag onActive={onTypeChangeHandler} tags={typeList}></SwiperTag>
 
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
-                  {CARDS.map((card, idx) => {
+                  {dataSource.map((card, idx) => {
                     return <Card {...card} key={idx}></Card>;
                   })}
                 </div>
@@ -317,11 +345,9 @@ export default function Index() {
                 ></PagiNation>
               </>
             ) : (
-              <>
-                <div className="grid grid-cols-1 gap-8 my-7">
-                  <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource}></PostGrid>
-                </div>
-              </>
+              <div className="grid grid-cols-1 gap-8 my-7">
+                <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource}></PostGrid>
+              </div>
             )}
           </div>
         </div>
@@ -330,7 +356,7 @@ export default function Index() {
   );
 }
 
-export async function getServerSideProps({ locale = 'en-US' }) {
+export async function getServerSideProps({ locale = 'en-US', query }) {
   return {
     props: {
       messages: {
@@ -339,6 +365,7 @@ export async function getServerSideProps({ locale = 'en-US' }) {
       },
       now: new Date().getTime(),
       locale,
+      query,
     },
   };
 }
