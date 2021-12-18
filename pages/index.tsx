@@ -10,6 +10,7 @@ import Card from '../components/card';
 import SwiperTag from '../components/swiper-tag';
 import PagiNation from '../components/pagination';
 import Search from '../components/search';
+import PostGrid from '../components/post-grid';
 
 import style from './index.module.less';
 import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
@@ -38,6 +39,7 @@ const SUBTAB = [
   },
 ];
 
+// this data just for test
 const TAGS = [
   { name: 'all', value: 6554 },
   { name: 'gallery', value: 419 },
@@ -53,6 +55,83 @@ const TAGS = [
   { name: 'other', value: 5612 },
 ];
 
+const EVENTS = [
+  {
+    name: 'SuperDelicious',
+    coverImg:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    activityTime: '2012/08/12 -- 2021/12/30',
+  },
+  {
+    name: 'SuperDelicious',
+    coverImg:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    activityTime: '2012/08/12 -- 2021/12/30',
+  },
+  {
+    name: 'SuperDelicious',
+    coverImg:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    activityTime: '2012/08/12 -- 2021/12/30',
+  },
+  {
+    name: 'SuperDelicious',
+    coverImg:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    activityTime: '2012/08/12 -- 2021/12/30',
+  },
+  {
+    name: 'SuperDelicious',
+    coverImg:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    activityTime: '2012/08/12 -- 2021/12/30',
+  },
+];
+
+const CARDS = [
+  {
+    coverImgUrl:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    name: 'SuperDelicious',
+    type: 'other',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
+    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
+  },
+  {
+    coverImgUrl:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    name: 'SuperDelicious',
+    type: 'other',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
+    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
+  },
+  {
+    coverImgUrl:
+      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
+    name: 'SuperDelicious',
+    type: 'other',
+    description:
+      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
+    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
+    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
+  },
+];
+// test data end
+
 export default function Index() {
   const meta = {
     title: `Home - ${SITE_NAME}`,
@@ -67,6 +146,10 @@ export default function Index() {
   const [totalPage, setTotalPage] = React.useState(1);
   const [noData, setNoData] = React.useState(false);
   const nextCursor = React.useRef(1);
+
+  const [dataSource, setDataSource] = React.useState(EVENTS);
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const [hasMore, setHasMore] = React.useState(true);
 
   const requestData = async ({ tab, subTab, page, query = '', type }) => {
     let data;
@@ -131,6 +214,25 @@ export default function Index() {
     const data = requestData({ tab: tabState, subTab, page: 1, query: '', type: '' });
   };
 
+  const loadMore = React.useCallback(
+    async (defaultPage?: number) => {
+      // const filter = `tag:events + tag:hash-${formatLocale}`;
+      // const list = await getPosts({
+      //   filter,
+      //   limit: 5,
+      //   page: defaultPage || pageNumber + 1,
+      // });
+      // if (list.length === 0) {
+      //   setHasMore(false);
+      //   return;
+      // }
+      // setDataSource([...dataSource, ...list]);
+      // setPage((defaultPage || pageNumber) + 1);
+      // setHasMore(true);
+    },
+    [pageNumber, hasMore],
+  );
+
   const cls = cn('flex-1', style.bottomLine);
 
   return (
@@ -165,35 +267,41 @@ export default function Index() {
                     label={item.label}
                     key={item.label}
                     onClick={() => {
-                      onSubTabChange(item.label);
+                      onSubTabChange(item.type);
                     }}
-                    active={subTabState === item.label}
+                    active={subTabState === item.type}
                   />
                 );
               })}
             </div>
-            <Search></Search>
+            {subTabState === 'parcel' ? <Search></Search> : null}
           </div>
           <div className="mt-8">
-            <SwiperTag tags={TAGS}></SwiperTag>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
-              <Card
-                coverImgUrl="https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg"
-                name="SuperDelicious"
-                type="other"
-                description="Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco"
-                parcelPageUrl="https://www.cryptovoxels.com/parcels/4375"
-                openseaUrl="https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375"
-              ></Card>
-            </div>
-            <PagiNation
-              total={50}
-              pageNumber={0}
-              pageSize={5}
-              pageChange={(e) => {
-                console.log(e);
-              }}
-            ></PagiNation>
+            {subTabState === 'parcel' ? (
+              <>
+                <SwiperTag tags={TAGS}></SwiperTag>
+
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
+                  {CARDS.map((card, idx) => {
+                    return <Card {...card} key={idx}></Card>;
+                  })}
+                </div>
+                <PagiNation
+                  total={50}
+                  pageNumber={0}
+                  pageSize={5}
+                  pageChange={(e) => {
+                    console.log(e);
+                  }}
+                ></PagiNation>
+              </>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 gap-8 my-7">
+                  <PostGrid events={EVENTS}></PostGrid>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </Layout>

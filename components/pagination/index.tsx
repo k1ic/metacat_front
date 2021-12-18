@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Autor: wq
- * @Date: 2021-12-17 09:15:16
- * @watermark: 成都沃飞长空
- * @LastEditors: wq
- */
-
 import React, { useState } from 'react';
 import cn from 'classnames';
 import ReactPaginate from 'react-paginate';
