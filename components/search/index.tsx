@@ -22,7 +22,7 @@ export default function Search({ text, onSearch }: Props) {
     } else if (onSearch) {
       onSearch(value);
     }
-  }, [show]);
+  }, [show, value]);
   return (
     <div className="flex w-auto items-center">
       <div className={cn('relative', show ? style.searchContainer : style.toggle)}>
@@ -34,7 +34,9 @@ export default function Search({ text, onSearch }: Props) {
           }}
           className={cn('relative search-input w-full h-full font-normal text-lg', style.search)}
         ></SearchInput>
-        <img className={cn('absolute', style.close)} src="/images/关闭.png" onClick={clear}></img>
+        {value ? (
+          <img className={cn('absolute', style.close)} src="/images/关闭.png" onClick={clear}></img>
+        ) : null}
       </div>
       <div
         className={cn(

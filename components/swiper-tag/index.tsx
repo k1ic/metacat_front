@@ -71,7 +71,7 @@ export default function SwiperTag({ tags = [], label, className, onActive }: Pro
           return (
             <SwiperSlide
               className={cn(
-                'box-border w-12 p-2 font-semibold text-white',
+                'box-border w-12 py-2 px-4 font-semibold text-white',
                 item.name === activeLabel ? styles.active : null,
                 styles.slide,
               )}

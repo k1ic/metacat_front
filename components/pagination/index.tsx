@@ -24,11 +24,8 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
 
   React.useEffect(() => {
     setPageCount(total);
-  }, [total]);
-
-  React.useEffect(() => {
     setCurrentItems(pageNumber);
-  }, [pageNumber]);
+  }, [total, pageNumber]);
 
   const jumpTopage = React.useCallback(
     (e) => {
@@ -42,7 +39,7 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
         }
       }
     },
-    [null],
+    [pageCount],
   );
 
   const baseCls = cn(
@@ -55,6 +52,7 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
       <ReactPaginate
         className="flex items-center"
         pageClassName={baseCls}
+        pageLinkClassName={styles.link}
         activeClassName={styles.active}
         breakClassName={baseCls}
         breakLabel="..."

@@ -62,7 +62,10 @@ export default function Carousel({ imgs }: Props) {
                 jumpToDetail(slide.detailUrl);
               }}
             >
-              <img className={cn('w-full', styles.img)} src={slide.imgUrl} />
+              <img
+                className={cn('w-full', styles.img)}
+                src={slide.imgUrl || '/images/默认图片-矩形.png'}
+              />
               <div
                 className={cn(
                   'text-white w-full text-xl px-4 flex justify-center items-center font-medium truncate',

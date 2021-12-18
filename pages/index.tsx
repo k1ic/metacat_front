@@ -59,7 +59,7 @@ export default function Index(props) {
   const nextCursor = React.useRef(1);
 
   const [dataSource, setDataSource] = React.useState([]);
-  const [pageNumber, setPageNumber] = React.useState(1);
+  const [pageNumber, setPageNumber] = React.useState(0);
   const [hasMore, setHasMore] = React.useState(true);
 
   const requestData = async ({ tab, subTab, page, query = '', type }): Promise<any[]> => {
@@ -67,7 +67,7 @@ export default function Index(props) {
 
     if (tab === 'voxel') {
       if (subTab === 'parcel') {
-        const res = await getCVParcelList(page, 10, query, type);
+        const res = await getCVParcelList(page, 9, query, type);
         const { parcel_list, total_page, type_total } = res.data;
 
         const typeArray = Object.keys(type_total).map((key) => {
@@ -93,13 +93,13 @@ export default function Index(props) {
       }
     } else if (tab === 'decentraland') {
       if (subTab === 'parcel') {
-        const res = await getDCLParcelList(page, 10, query, type);
+        const res = await getDCLParcelList(page, 9, query, type);
         const { parcel_list, total_page, type_total } = res.data;
 
         setTotalPage(total_page);
         const typeArray = Object.keys(type_total).map((key) => {
           const value = type_total[key];
-          return { [key]: value };
+          return { name: key, value };
         });
 
         setTypeList(typeArray);
@@ -128,7 +128,8 @@ export default function Index(props) {
 
   const onTabChange = async (tab) => {
     setTabState(tab);
-    const data = requestData({ tab, subTab: subTabState, page: 1, query: '', type: '' });
+    const data = await requestData({ tab, subTab: subTabState, page: 1, query: '', type: '' });
+    setDataSource(data);
   };
 
   const onSubTabChange = async (subTab) => {
@@ -138,20 +139,54 @@ export default function Index(props) {
     setDataSource(data);
   };
 
-  const onTypeChangeHandler = React.useCallback((type: string) => {
-    setTypeState(type);
-  }, []);
+  const onTypeChangeHandler = React.useCallback(
+    (type: string) => {
+      setTypeState(type);
+      const rq = requestData({
+        tab: tabState,
+        subTab: subTabState,
+        page: 1,
+        query: searchText,
+        type,
+      });
+      rq.then((data) => {
+        setDataSource(data);
+      });
+    },
+    [tabState, subTabState, searchText],
+  );
 
-  const onPageChangeHandler = React.useCallback((number: number) => {
-    console.log(number);
-    setPageNumber(number);
-  }, []);
+  const onPageChangeHandler = React.useCallback(
+    (number: number) => {
+      const requestNumber = number + 1;
+      const rq = requestData({
+        tab: tabState,
+        subTab: subTabState,
+        page: requestNumber,
+        query: searchText,
+        type: typeState,
+      });
+      rq.then((data) => {
+        setDataSource(data);
+      });
+      // setPageNumber(number);
+    },
+    [tabState, subTabState, typeState, searchText],
+  );
 
   const onSearchHandler = React.useCallback(
     (text: string) => {
       setSearchText(text);
-
-      requestData({ tab: tabState, subTab: subTabState, query: text, page: 1, type: typeState });
+      const rq = requestData({
+        tab: tabState,
+        subTab: subTabState,
+        query: text,
+        page: 1,
+        type: typeState,
+      });
+      rq.then((data) => {
+        setDataSource(data);
+      });
     },
     [tabState, subTabState, typeState],
   );
@@ -194,8 +229,6 @@ export default function Index(props) {
 
   const cls = cn('flex-1', style.bottomLine);
 
-  console.log(dataSource, pageNumber, hasMore, totalPage);
-  console.log('typeList', typeList);
   return (
     <Page meta={meta}>
       <Layout>
@@ -254,7 +287,7 @@ export default function Index(props) {
                 <PagiNation
                   total={totalPage}
                   pageNumber={pageNumber}
-                  pageSize={10}
+                  pageSize={9}
                   pageChange={onPageChangeHandler}
                 ></PagiNation>
               </>

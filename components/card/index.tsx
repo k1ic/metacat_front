@@ -39,7 +39,7 @@ export default function Card({
     >
       <div className={style.imgContanier}>
         <div className={cn('flex items-center justify-center text-xs', style.tag)}>{type}</div>
-        <img className={style.img} src={coverImgUrl} />
+        <img className={style.img} src={coverImgUrl || '/images/默认图片-矩形.png'} />
       </div>
       <div className={cn('p-5 flex-1', style.content)}>
         <div className={cn('flex justify-between items-center', style.contnetHeader)}>

@@ -1,11 +1,15 @@
 .baseBtn {
-  height: 26px;
   background: rgba(0, 208, 236, 0.1);
   /* 辅-亮绿 */
   box-sizing: border-box;
-  padding: 10px;
+  padding: 0 5px;
   margin: 0 10px;
   cursor: pointer;
+}
+.link{
+  min-width: 26px;
+  height: 26px;
+  text-align: center;
 }
 
 .baseBtn:hover,
