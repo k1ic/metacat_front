@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import ReactPaginate from 'react-paginate';
 
@@ -12,15 +12,23 @@ type Props = {
 };
 
 export default function Pagination({ total, pageNumber, pageSize, pageChange }: Props) {
-  const [currentItems, setCurrentItems] = useState(pageNumber);
-  const [pageCount, setPageCount] = useState(total);
-  const [itemOffset, setItemOffset] = useState(pageSize);
+  const [currentItems, setCurrentItems] = React.useState(pageNumber);
+  const [pageCount, setPageCount] = React.useState(total);
+  const [itemOffset, setItemOffset] = React.useState(pageSize);
 
   const handlePageClick = (page) => {
     if (pageChange) {
       pageChange(page);
     }
   };
+
+  React.useEffect(() => {
+    setPageCount(total);
+  }, [total]);
+
+  React.useEffect(() => {
+    setCurrentItems(pageNumber);
+  }, [pageNumber]);
 
   const jumpTopage = React.useCallback(
     (e) => {

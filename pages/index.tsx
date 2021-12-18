@@ -40,99 +40,6 @@ const SUBTAB = [
   },
 ];
 
-// this data just for test
-const TAGS = [
-  { name: 'all', value: 6554 },
-  { name: 'gallery', value: 419 },
-  { name: 'MVB', value: 130 },
-  { name: 'tower', value: 74 },
-  { name: 'HQ', value: 71 },
-  { name: 'house', value: 60 },
-  { name: 'club', value: 53 },
-  { name: 'museum', value: 40 },
-  { name: 'garden', value: 35 },
-  { name: 'temple', value: 32 },
-  { name: 'shop', value: 28 },
-  { name: 'other', value: 5612 },
-];
-
-const EVENTS = [
-  {
-    name: 'SuperDelicious',
-    coverImg:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    activityTime: '2012/08/12 -- 2021/12/30',
-  },
-  {
-    name: 'SuperDelicious',
-    coverImg:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    activityTime: '2012/08/12 -- 2021/12/30',
-  },
-  {
-    name: 'SuperDelicious',
-    coverImg:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    activityTime: '2012/08/12 -- 2021/12/30',
-  },
-  {
-    name: 'SuperDelicious',
-    coverImg:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    activityTime: '2012/08/12 -- 2021/12/30',
-  },
-  {
-    name: 'SuperDelicious',
-    coverImg:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    activityTime: '2012/08/12 -- 2021/12/30',
-  },
-];
-
-const CARDS = [
-  {
-    coverImgUrl:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    name: 'SuperDelicious',
-    type: 'other',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
-    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
-  },
-  {
-    coverImgUrl:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    name: 'SuperDelicious',
-    type: 'other',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
-    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
-  },
-  {
-    coverImgUrl:
-      'https://media-crvox.sfo2.digitaloceanspaces.com/0x195acaf2ccb5d388f4f5a03030ad765d74d94f3f/womps/1639464964429-5727956d-03dd-4363-936f-5a4763206df9.jpg',
-    name: 'SuperDelicious',
-    type: 'other',
-    description:
-      'Gallery of Kerb and DaisyCoco. Random nuggets of digital madness from our little studio in the middle of nowhere.Gallery of Kerb and DaisyCoco',
-    parcelPageUrl: 'https://www.cryptovoxels.com/parcels/4375',
-    openseaUrl: 'https://opensea.io/assets/0x79986aF15539de2db9A5086382daEdA917A9CF0C/4375',
-  },
-];
-// test data end
-
 export default function Index(props) {
   const meta = {
     title: `Home - ${SITE_NAME}`,
@@ -235,6 +142,11 @@ export default function Index(props) {
     setTypeState(type);
   }, []);
 
+  const onPageChangeHandler = React.useCallback((number: number) => {
+    console.log(number);
+    setPageNumber(number);
+  }, []);
+
   const onSearchHandler = React.useCallback(
     (text: string) => {
       setSearchText(text);
@@ -282,7 +194,7 @@ export default function Index(props) {
 
   const cls = cn('flex-1', style.bottomLine);
 
-  console.log(dataSource, pageNumber, hasMore);
+  console.log(dataSource, pageNumber, hasMore, totalPage);
   console.log('typeList', typeList);
   return (
     <Page meta={meta}>
@@ -328,7 +240,11 @@ export default function Index(props) {
           <div className="mt-8">
             {subTabState === 'parcel' ? (
               <>
-                <SwiperTag onActive={onTypeChangeHandler} tags={typeList}></SwiperTag>
+                <SwiperTag
+                  onActive={onTypeChangeHandler}
+                  tags={typeList}
+                  label={typeList[0]?.name}
+                ></SwiperTag>
 
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
                   {dataSource.map((card, idx) => {
@@ -339,9 +255,7 @@ export default function Index(props) {
                   total={totalPage}
                   pageNumber={pageNumber}
                   pageSize={10}
-                  pageChange={(e) => {
-                    console.log(e);
-                  }}
+                  pageChange={onPageChangeHandler}
                 ></PagiNation>
               </>
             ) : (

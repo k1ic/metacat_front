@@ -35,6 +35,9 @@ export default function EventCard({
   }, [eventDetailUrl]);
 
   const inTimeLine = React.useCallback(() => {
+    if (!activityTime) {
+      return false;
+    }
     const times = activityTime.split('--');
     const start = times[0].trim();
     const end = times[1].trim();

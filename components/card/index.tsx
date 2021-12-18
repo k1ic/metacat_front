@@ -41,7 +41,7 @@ export default function Card({
         <div className={cn('flex items-center justify-center text-xs', style.tag)}>{type}</div>
         <img className={style.img} src={coverImgUrl} />
       </div>
-      <div className={cn('p-5', style.content)}>
+      <div className={cn('p-5 flex-1', style.content)}>
         <div className={cn('flex justify-between items-center', style.contnetHeader)}>
           <div className="text-xl font-semibold truncate flex-1 mr-3" title={name}>
             {name}
