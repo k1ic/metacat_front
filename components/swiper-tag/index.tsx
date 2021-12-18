@@ -23,9 +23,9 @@ type Props = {
   onActive?: (label) => void;
 };
 
-export default function SwiperTag({ tags, label, className, onActive }: Props) {
+export default function SwiperTag({ tags = [], label, className, onActive }: Props) {
   const [percent, setPercent] = React.useState(0);
-  const [activeLabel, setActiveLabel] = React.useState(label || tags[0].name);
+  const [activeLabel, setActiveLabel] = React.useState(label || tags[0]?.name);
 
   const activeTag = React.useCallback(
     (item) => {

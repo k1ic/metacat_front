@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Page from '../components/page';
 import Layout from '../components/layout';
 import { SITE_NAME, META_DESCRIPTION } from '../common/const';
+import { convert } from '../common/utils';
 
 import Tab from '../components/tab';
 import SecondTab from '../components/tab2';
@@ -145,13 +146,15 @@ export default function Index() {
   const [pageNum, setPageNum] = React.useState(1);
   const [totalPage, setTotalPage] = React.useState(1);
   const [noData, setNoData] = React.useState(false);
+  const [searchText, setSearchText] = React.useState('');
+  const [typeState, setTypeState] = React.useState('');
   const nextCursor = React.useRef(1);
 
-  const [dataSource, setDataSource] = React.useState(EVENTS);
+  const [dataSource, setDataSource] = React.useState([]);
   const [pageNumber, setPageNumber] = React.useState(1);
   const [hasMore, setHasMore] = React.useState(true);
 
-  const requestData = async ({ tab, subTab, page, query = '', type }) => {
+  const requestData = async ({ tab, subTab, page, query = '', type }): Promise<any[]> => {
     let data;
     if (tab === 'voxel') {
       if (subTab === 'parcel') {
@@ -197,7 +200,7 @@ export default function Index() {
       }
     }
 
-    return data;
+    return convert(data);
   };
 
   // useEffect(() => {
@@ -211,30 +214,48 @@ export default function Index() {
 
   const onSubTabChange = async (subTab) => {
     setSubTabState(subTab);
-    const data = requestData({ tab: tabState, subTab, page: 1, query: '', type: '' });
+    // if (subTab === 'event') return;
+    const data = await requestData({ tab: tabState, subTab, page: 1, query: '', type: '' });
+    setDataSource(data);
   };
+
+  const onTypeChangeHandler = React.useCallback((type: string) => {
+    setTypeState(type);
+  }, []);
+
+  const onSearchHandler = React.useCallback(
+    (text: string) => {
+      setSearchText(text);
+
+      requestData({ tab: tabState, subTab: subTabState, query: text, page: 1, type: typeState });
+    },
+    [tabState, subTabState, typeState],
+  );
 
   const loadMore = React.useCallback(
     async (defaultPage?: number) => {
-      // const filter = `tag:events + tag:hash-${formatLocale}`;
-      // const list = await getPosts({
-      //   filter,
-      //   limit: 5,
-      //   page: defaultPage || pageNumber + 1,
-      // });
-      // if (list.length === 0) {
-      //   setHasMore(false);
-      //   return;
-      // }
-      // setDataSource([...dataSource, ...list]);
-      // setPage((defaultPage || pageNumber) + 1);
-      // setHasMore(true);
+      if (dataSource.length === 0) return;
+      const list = await requestData({
+        tab: tabState,
+        subTab: subTabState,
+        page: defaultPage || 1,
+        query: searchText,
+        type: typeState,
+      });
+      if (list.length === 0) {
+        setHasMore(false);
+        return;
+      }
+      setDataSource([...dataSource, ...list]);
+      setPageNumber((defaultPage || pageNumber) + 1);
+      setHasMore(true);
     },
-    [pageNumber, hasMore],
+    [pageNumber, hasMore, tabState, subTabState, searchText, typeState, dataSource],
   );
 
   const cls = cn('flex-1', style.bottomLine);
 
+  console.log(dataSource, pageNumber, hasMore);
   return (
     <Page meta={meta}>
       <Layout>
@@ -274,12 +295,12 @@ export default function Index() {
                 );
               })}
             </div>
-            {subTabState === 'parcel' ? <Search></Search> : null}
+            {subTabState === 'parcel' ? <Search onSearch={onSearchHandler}></Search> : null}
           </div>
           <div className="mt-8">
             {subTabState === 'parcel' ? (
               <>
-                <SwiperTag tags={TAGS}></SwiperTag>
+                <SwiperTag onActive={onTypeChangeHandler} tags={TAGS}></SwiperTag>
 
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
                   {CARDS.map((card, idx) => {
@@ -298,7 +319,7 @@ export default function Index() {
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-8 my-7">
-                  <PostGrid events={EVENTS}></PostGrid>
+                  <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource}></PostGrid>
                 </div>
               </>
             )}
