@@ -1,30 +1,26 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 export default function Footer() {
   return (
     <footer className="py-10 bg-black flex text-white items-center relative">
-      <div className="flex flex-1 sm:flex-row flex-col sm:items-center main-content">
-        <div className="flex items-center">
+      <div className="flex sm:flex-row flex-col sm:items-center main-content">
+        <div className="flex flex-col items-start">
           <div className="sm:w-16 sm:h-16 w-12 h-12 mr-4">
             <img className="mr-4" src="/images/logo.png" alt="logo" />
           </div>
-
           <section className="flex flex-col	h-full">
-            <span className="sm:text-xl text-sm font-roboto">
-              Metaverse can't be built without NFTs.
-            </span>
-            <span className="text-gray-200 sm:text-sm text-xs mt-2 font-roboto font-light">
-              Copyright © {`${new Date().getFullYear()} `}{' '}
-              <a href="https://m7e.io" target="_blank" className="underline">
-                M7e
-              </a>
-              . All rights reserved.
-            </span>
+            <span className="sm:text-xl text-base font-semibold">Powered by metacat</span>
           </section>
         </div>
 
         <section className="flex flex-1 sm:justify-end justify-center mt-4 sm:mt-0">
-          <a href="https://twitter.com/m7e_io" target="_blank" className="w-8 h-8 mr-4">
+          <a
+            href="https://twitter.com/m7e_io"
+            target="_blank"
+            data-tip="123124212"
+            className="w-8 h-8 mr-4"
+          >
             <img src="/images/twitter.png" />
           </a>
           <a
@@ -43,6 +39,13 @@ export default function Footer() {
           </a>
         </section>
       </div>
+      <ReactTooltip
+        effect="solid"
+        textColor="rgba(0, 0, 0, 1)"
+        className="font-normal text-sm"
+        backgroundColor="rgba(0, 208, 236, 0.2)"
+        border={false}
+      ></ReactTooltip>
     </footer>
   );
 }

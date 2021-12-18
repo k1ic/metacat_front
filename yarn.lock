@@ -10132,7 +10132,7 @@
     "@react-aria/utils" "^3.10.0"
     "@react-aria/visually-hidden" "^3.2.3"
 
-"react-dom@*", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0-rc.1", "react-dom@^16.8.0 || 17.x", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=16", "react-dom@>=16.6.0", "react-dom@17.x":
+"react-dom@*", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0-rc.1", "react-dom@^16.8.0 || 17.x", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=16", "react-dom@>=16.0.0", "react-dom@>=16.6.0", "react-dom@17.x":
   "integrity" "sha1-7P+2hF462Nv83EmPDQqTlzZQLCM="
   "resolved" "https://registry.npmmirror.com/react-dom/download/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -10204,6 +10204,14 @@
   "version" "8.1.0"
   dependencies:
     "clsx" "^1.1.1"
+
+"react-tooltip@^4.2.21":
+  "integrity" "sha1-hAEj7YbPM9UN3ejsiBOylgv97X8="
+  "resolved" "https://registry.nlark.com/react-tooltip/download/react-tooltip-4.2.21.tgz"
+  "version" "4.2.21"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "uuid" "^7.0.3"
 
 "react-transition-group@^4.4.2":
   "integrity" "sha1-i1mlbwnO17VcvVPDZ2i5IokNVHA="
@@ -12487,6 +12495,11 @@
   "integrity" "sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4="
   "resolved" "https://registry.npmmirror.com/uuid/download/uuid-3.4.0.tgz"
   "version" "3.4.0"
+
+"uuid@^7.0.3":
+  "integrity" "sha1-xcnyyM8l3Ao3LE3xRBxB9b0MaAs="
+  "resolved" "https://registry.npmmirror.com/uuid/download/uuid-7.0.3.tgz"
+  "version" "7.0.3"
 
 "uuid@3.3.2":
   "integrity" "sha1-G0r0lV6zB3xQHCOHL8ZROBFYcTE="
