@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="flex sm:flex-row flex-col sm:items-center main-content">
         <div className="flex flex-col items-start">
           <div className="sm:w-16 sm:h-16 w-12 h-12 mr-4">
-            <img className="mr-4" src="/images/logo.png" alt="logo" />
+            <img className="mr-4" src="/images/icon.png" alt="logo" />
           </div>
           <section className="flex flex-col	h-full">
             <span className="sm:text-xl text-base font-semibold">Powered by metacat</span>
@@ -25,7 +25,7 @@ export default function Footer() {
             href="https://twitter.com/Metacat007"
             target="_blank"
             data-tip="twitter"
-            className="w-10 h-10 mr-4"
+            className="w-10 h-10 mr-14"
           >
             <img src="/images/twitter.png" />
           </a>
@@ -33,7 +33,7 @@ export default function Footer() {
             href="https://medium.com/@themetacat"
             target="_blank"
             data-tip="medium"
-            className="w-10 h-10  rounded-full mr-4 justify-center items-center flex bg-transparent"
+            className="w-10 h-10  rounded-full mr-14 justify-center items-center flex bg-transparent"
           >
             <img src="/images/medium.png" />
           </a>
