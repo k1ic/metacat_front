@@ -9838,17 +9838,10 @@ react-aria@^3.6.0:
     "@react-aria/utils" "^3.10.0"
     "@react-aria/visually-hidden" "^3.2.3"
 
-<<<<<<< HEAD
-"react-dom@*", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0-rc.1", "react-dom@^16.8.0 || 17.x", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=16", "react-dom@>=16.0.0", "react-dom@>=16.6.0", "react-dom@17.x":
-  "integrity" "sha1-7P+2hF462Nv83EmPDQqTlzZQLCM="
-  "resolved" "https://registry.npmmirror.com/react-dom/download/react-dom-17.0.2.tgz"
-  "version" "17.0.2"
-=======
 react-dom@17.x:
   version "17.0.2"
   resolved "https://registry.npmmirror.com/react-dom/download/react-dom-17.0.2.tgz"
   integrity sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=
->>>>>>> e37ec0e3dc5ba245da7860b59d62d0200d0fd1dd
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -9913,25 +9906,18 @@ react-toastify@^8.0.2:
   dependencies:
     clsx "^1.1.1"
 
-<<<<<<< HEAD
-"react-tooltip@^4.2.21":
-  "integrity" "sha1-hAEj7YbPM9UN3ejsiBOylgv97X8="
-  "resolved" "https://registry.nlark.com/react-tooltip/download/react-tooltip-4.2.21.tgz"
-  "version" "4.2.21"
+react-tooltip@^4.2.21:
+  version "4.2.21"
+  resolved "https://registry.nlark.com/react-tooltip/download/react-tooltip-4.2.21.tgz"
+  integrity sha1-hAEj7YbPM9UN3ejsiBOylgv97X8=
   dependencies:
-    "prop-types" "^15.7.2"
-    "uuid" "^7.0.3"
+    prop-types "^15.7.2"
+    uuid "^7.0.3"
 
-"react-transition-group@^4.4.2":
-  "integrity" "sha1-i1mlbwnO17VcvVPDZ2i5IokNVHA="
-  "resolved" "https://registry.nlark.com/react-transition-group/download/react-transition-group-4.4.2.tgz"
-  "version" "4.4.2"
-=======
 react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.nlark.com/react-transition-group/download/react-transition-group-4.4.2.tgz"
   integrity sha1-i1mlbwnO17VcvVPDZ2i5IokNVHA=
->>>>>>> e37ec0e3dc5ba245da7860b59d62d0200d0fd1dd
   dependencies:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
@@ -11965,165 +11951,6 @@ url-parse-lax@^1.0.0:
   resolved "https://registry.nlark.com/url-parse-lax/download/url-parse-lax-1.0.0.tgz?cache=0&sync_timestamp=1628547788150&other_urls=https%3A%2F%2Fregistry.nlark.com%2Furl-parse-lax%2Fdownload%2Furl-parse-lax-1.0.0.tgz"
   integrity sha1-evjzA2Rem9eaJy56FKxovAYJ2nM=
   dependencies:
-<<<<<<< HEAD
-    "prepend-http" "^1.0.1"
-
-"url-parse-lax@^3.0.0":
-  "integrity" "sha1-FrXK/Afb42dsGxmZF3gj1lA6yww="
-  "resolved" "https://registry.nlark.com/url-parse-lax/download/url-parse-lax-3.0.0.tgz?cache=0&sync_timestamp=1628547788150&other_urls=https%3A%2F%2Fregistry.nlark.com%2Furl-parse-lax%2Fdownload%2Furl-parse-lax-3.0.0.tgz"
-  "version" "3.0.0"
-  dependencies:
-    "prepend-http" "^2.0.0"
-
-"url-set-query@^1.0.0":
-  "integrity" "sha1-AW6M/Xwg7gXK/neV6JK9BwL6ozk="
-  "resolved" "https://registry.npm.taobao.org/url-set-query/download/url-set-query-1.0.0.tgz"
-  "version" "1.0.0"
-
-"url-to-options@^1.0.1":
-  "integrity" "sha1-FQWgOiiaSMvXpDTvuu7FBV9WM6k="
-  "resolved" "https://registry.npm.taobao.org/url-to-options/download/url-to-options-1.0.1.tgz"
-  "version" "1.0.1"
-
-"url@^0.11.0":
-  "integrity" "sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE="
-  "resolved" "https://registry.nlark.com/url/download/url-0.11.0.tgz?cache=0&sync_timestamp=1618846952693&other_urls=https%3A%2F%2Fregistry.nlark.com%2Furl%2Fdownload%2Furl-0.11.0.tgz"
-  "version" "0.11.0"
-  dependencies:
-    "punycode" "1.3.2"
-    "querystring" "0.2.0"
-
-"use-intl@^1.5.1":
-  "integrity" "sha1-BsSJWyH5hkXBudlXdIQC+NrdZgk="
-  "resolved" "https://registry.npmmirror.com/use-intl/download/use-intl-1.5.1.tgz"
-  "version" "1.5.1"
-  dependencies:
-    "intl-messageformat" "^9.3.18"
-
-"use-subscription@1.5.1":
-  "integrity" "sha1-c1ARB/AvrYTG3VeWW+sLdcaMQtE="
-  "resolved" "https://registry.npmmirror.com/use-subscription/download/use-subscription-1.5.1.tgz"
-  "version" "1.5.1"
-  dependencies:
-    "object-assign" "^4.1.1"
-
-"use@^3.1.0":
-  "integrity" "sha1-1QyMrHmhn7wg8pEfVuuXP04QBw8="
-  "resolved" "https://registry.npm.taobao.org/use/download/use-3.1.1.tgz"
-  "version" "3.1.1"
-
-"utf-8-validate@^5.0.2":
-  "integrity" "sha1-wVoZpq8fetnsfdxCV0fKKMNkSSI="
-  "resolved" "https://registry.npmmirror.com/utf-8-validate/download/utf-8-validate-5.0.7.tgz"
-  "version" "5.0.7"
-  dependencies:
-    "node-gyp-build" "^4.3.0"
-
-"utf8@3.0.0":
-  "integrity" "sha1-8FLu0TZNaW52nvBYsYPfiMh/adE="
-  "resolved" "https://registry.npmmirror.com/utf8/download/utf8-3.0.0.tgz"
-  "version" "3.0.0"
-
-"util-deprecate@^1.0.1", "util-deprecate@^1.0.2", "util-deprecate@~1.0.1":
-  "integrity" "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="
-  "resolved" "https://registry.npm.taobao.org/util-deprecate/download/util-deprecate-1.0.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Futil-deprecate%2Fdownload%2Futil-deprecate-1.0.2.tgz"
-  "version" "1.0.2"
-
-"util@^0.11.0":
-  "integrity" "sha1-MjZzNyDsZLsn9uJvQhqqLhtYjWE="
-  "resolved" "https://registry.nlark.com/util/download/util-0.11.1.tgz?cache=0&sync_timestamp=1622213047493&other_urls=https%3A%2F%2Fregistry.nlark.com%2Futil%2Fdownload%2Futil-0.11.1.tgz"
-  "version" "0.11.1"
-  dependencies:
-    "inherits" "2.0.3"
-
-"util@^0.12.0", "util@0.12.4":
-  "integrity" "sha1-ZhIaMUIN+PAcoMRkvhXfodGFAlM="
-  "resolved" "https://registry.nlark.com/util/download/util-0.12.4.tgz?cache=0&sync_timestamp=1622213047493&other_urls=https%3A%2F%2Fregistry.nlark.com%2Futil%2Fdownload%2Futil-0.12.4.tgz"
-  "version" "0.12.4"
-  dependencies:
-    "inherits" "^2.0.3"
-    "is-arguments" "^1.0.4"
-    "is-generator-function" "^1.0.7"
-    "is-typed-array" "^1.1.3"
-    "safe-buffer" "^5.1.2"
-    "which-typed-array" "^1.1.2"
-
-"util@0.10.3":
-  "integrity" "sha1-evsa/lCAUkZInj23/g7TeTNqwPk="
-  "resolved" "https://registry.nlark.com/util/download/util-0.10.3.tgz?cache=0&sync_timestamp=1622213047493&other_urls=https%3A%2F%2Fregistry.nlark.com%2Futil%2Fdownload%2Futil-0.10.3.tgz"
-  "version" "0.10.3"
-  dependencies:
-    "inherits" "2.0.1"
-
-"utils-merge@1.0.1":
-  "integrity" "sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM="
-  "resolved" "https://registry.nlark.com/utils-merge/download/utils-merge-1.0.1.tgz"
-  "version" "1.0.1"
-
-"uuid@^3.3.2":
-  "integrity" "sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4="
-  "resolved" "https://registry.npmmirror.com/uuid/download/uuid-3.4.0.tgz"
-  "version" "3.4.0"
-
-"uuid@^7.0.3":
-  "integrity" "sha1-xcnyyM8l3Ao3LE3xRBxB9b0MaAs="
-  "resolved" "https://registry.npmmirror.com/uuid/download/uuid-7.0.3.tgz"
-  "version" "7.0.3"
-
-"uuid@3.3.2":
-  "integrity" "sha1-G0r0lV6zB3xQHCOHL8ZROBFYcTE="
-  "resolved" "https://registry.npmmirror.com/uuid/download/uuid-3.3.2.tgz"
-  "version" "3.3.2"
-
-"v8-compile-cache@^2.0.3", "v8-compile-cache@^2.3.0":
-  "integrity" "sha1-LeGWGMZtwkfc+2+ZM4A12CRaLO4="
-  "resolved" "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.3.0.tgz"
-  "version" "2.3.0"
-
-"validate-npm-package-license@^3.0.1":
-  "integrity" "sha1-/JH2uce6FchX9MssXe/uw51PQQo="
-  "resolved" "https://registry.nlark.com/validate-npm-package-license/download/validate-npm-package-license-3.0.4.tgz"
-  "version" "3.0.4"
-  dependencies:
-    "spdx-correct" "^3.0.0"
-    "spdx-expression-parse" "^3.0.0"
-
-"varint@^5.0.0":
-  "integrity" "sha1-W0f4qUfrZouEjgNNz6h9D/in96Q="
-  "resolved" "https://registry.nlark.com/varint/download/varint-5.0.2.tgz"
-  "version" "5.0.2"
-
-"vary@^1", "vary@~1.1.2":
-  "integrity" "sha1-IpnwLG3tMNSllhsLn3RSShj2NPw="
-  "resolved" "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz"
-  "version" "1.1.2"
-
-"verror@1.10.0":
-  "integrity" "sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA="
-  "resolved" "https://registry.npmmirror.com/verror/download/verror-1.10.0.tgz"
-  "version" "1.10.0"
-  dependencies:
-    "assert-plus" "^1.0.0"
-    "core-util-is" "1.0.2"
-    "extsprintf" "^1.2.0"
-
-"vfile-location@^2.0.0":
-  "integrity" "sha1-iidPOUEbhxnqVyiALhDZ4N/xUZ4="
-  "resolved" "https://registry.nlark.com/vfile-location/download/vfile-location-2.0.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvfile-location%2Fdownload%2Fvfile-location-2.0.6.tgz"
-  "version" "2.0.6"
-
-"vfile-message@*", "vfile-message@^1.0.0":
-  "integrity" "sha1-WDOuB4od+i2W6WR4hs0ymTqzE+E="
-  "resolved" "https://registry.nlark.com/vfile-message/download/vfile-message-1.1.1.tgz?cache=0&sync_timestamp=1628780755225&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvfile-message%2Fdownload%2Fvfile-message-1.1.1.tgz"
-  "version" "1.1.1"
-  dependencies:
-    "unist-util-stringify-position" "^1.1.1"
-
-"vfile-message@^2.0.0":
-  "integrity" "sha1-W0O4gXHUCerlhHfRPyPdQdUsNxo="
-  "resolved" "https://registry.nlark.com/vfile-message/download/vfile-message-2.0.4.tgz?cache=0&sync_timestamp=1628780755225&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvfile-message%2Fdownload%2Fvfile-message-2.0.4.tgz"
-  "version" "2.0.4"
-=======
     prepend-http "^1.0.1"
 
 url-parse-lax@^3.0.0:
@@ -12228,6 +12055,11 @@ uuid@^3.3.2:
   resolved "https://registry.npmmirror.com/uuid/download/uuid-3.4.0.tgz"
   integrity sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4=
 
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.npmmirror.com/uuid/download/uuid-7.0.3.tgz"
+  integrity sha1-xcnyyM8l3Ao3LE3xRBxB9b0MaAs=
+
 v8-compile-cache@^2.0.3, v8-compile-cache@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.3.0.tgz"
@@ -12276,7 +12108,6 @@ vfile-message@^2.0.0:
   version "2.0.4"
   resolved "https://registry.nlark.com/vfile-message/download/vfile-message-2.0.4.tgz?cache=0&sync_timestamp=1628780755225&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvfile-message%2Fdownload%2Fvfile-message-2.0.4.tgz"
   integrity sha1-W0O4gXHUCerlhHfRPyPdQdUsNxo=
->>>>>>> e37ec0e3dc5ba245da7860b59d62d0200d0fd1dd
   dependencies:
     "@types/unist" "^2.0.0"
     unist-util-stringify-position "^2.0.0"
