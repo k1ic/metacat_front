@@ -336,9 +336,9 @@ export default function Index(props) {
                   })}
                 </div>
                 <PagiNation
-                  total={50}
-                  pageNumber={0}
-                  pageSize={5}
+                  total={totalPage}
+                  pageNumber={pageNumber}
+                  pageSize={10}
                   pageChange={(e) => {
                     console.log(e);
                   }}
