@@ -29,7 +29,11 @@ export default function PostGrid({ events = [], loadMore, hasMore, className }: 
       dataLength={events.length}
       next={loadMore}
       hasMore={hasMore}
-      loader={<div>Loading</div>}
+      loader={
+        <div className="w-full flex justify-center py-4">
+          <img src="/images/loading.png" className="animate-spin w-8 h-8" />
+        </div>
+      }
       className={cls}
       style={{ overflow: 'initial' }}
     >

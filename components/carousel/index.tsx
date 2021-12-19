@@ -64,7 +64,7 @@ export default function Carousel({ imgs }: Props) {
             >
               <img
                 className={cn('w-full', styles.img)}
-                src={slide.imgUrl || '/images/默认图片-矩形.png'}
+                src={slide.imgUrl || '/images/default-cover.png'}
               />
               <div
                 className={cn(

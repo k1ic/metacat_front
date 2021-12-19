@@ -12,6 +12,7 @@ import SwiperTag from '../components/swiper-tag';
 import PagiNation from '../components/pagination';
 import Search from '../components/search';
 import PostGrid from '../components/post-grid';
+import Status from '../components/status';
 
 import style from './index.module.less';
 import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
@@ -47,6 +48,7 @@ export default function Index(props) {
   };
 
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const [tabState, setTabState] = React.useState(props.query.tab || 'voxel');
   const [subTabState, setSubTabState] = React.useState(props.query.subTab || 'parcel');
@@ -62,61 +64,81 @@ export default function Index(props) {
   const [pageNumber, setPageNumber] = React.useState(0);
   const [hasMore, setHasMore] = React.useState(true);
 
-  const requestData = async ({ tab, subTab, page, query = '', type }): Promise<any[]> => {
+  const requestData = async ({
+    tab,
+    subTab,
+    page,
+    query = '',
+    type,
+    needUpdateTypeList = false,
+  }): Promise<any[]> => {
     let data;
+    setLoading(true);
+    setError(false);
 
-    if (tab === 'voxel') {
-      if (subTab === 'parcel') {
-        const res = await getCVParcelList(page, 9, query, type);
-        const { parcel_list, total_page, type_total } = res.data;
+    try {
+      if (tab === 'voxel') {
+        if (subTab === 'parcel') {
+          const res = await getCVParcelList(page, 9, query, type);
+          const { parcel_list, total_page, type_total } = res.data;
 
-        const typeArray = Object.keys(type_total).map((key) => {
-          const value = type_total[key];
-          return { name: key, value };
-        });
+          const typeArray = Object.keys(type_total).map((key) => {
+            const value = type_total[key];
+            return { name: key, value };
+          });
 
-        setTotalPage(total_page);
-        setTypeList(typeArray);
-        data = parcel_list;
-      } else if (subTab === 'event') {
-        const res = await getCVEventList(nextCursor.current, 10);
-        const { cursor, count, event_list } = res.data;
-        nextCursor.current = cursor;
+          setTotalPage(total_page);
 
-        if (event_list.length === 0) {
-          setNoData(true);
-        } else {
-          setNoData(false);
+          if (needUpdateTypeList) {
+            setTypeList(typeArray);
+          }
+          data = parcel_list;
+        } else if (subTab === 'event') {
+          const res = await getCVEventList(nextCursor.current, 10);
+          const { cursor, count, event_list } = res.data;
+          nextCursor.current = cursor;
+
+          if (event_list.length === 0) {
+            setNoData(true);
+          } else {
+            setNoData(false);
+          }
+
+          data = event_list;
         }
+      } else if (tab === 'decentraland') {
+        if (subTab === 'parcel') {
+          const res = await getDCLParcelList(page, 9, query, type);
+          const { parcel_list, total_page, type_total } = res.data;
 
-        data = event_list;
-      }
-    } else if (tab === 'decentraland') {
-      if (subTab === 'parcel') {
-        const res = await getDCLParcelList(page, 9, query, type);
-        const { parcel_list, total_page, type_total } = res.data;
+          setTotalPage(total_page);
+          const typeArray = Object.keys(type_total).map((key) => {
+            const value = type_total[key];
+            return { name: key, value };
+          });
 
-        setTotalPage(total_page);
-        const typeArray = Object.keys(type_total).map((key) => {
-          const value = type_total[key];
-          return { name: key, value };
-        });
+          if (needUpdateTypeList) {
+            setTypeList(typeArray);
+          }
+          data = parcel_list;
+        } else if (subTab === 'event') {
+          const res = await getDCLEventList(nextCursor.current, 10);
+          const { cursor, event_list } = res.data;
+          nextCursor.current = cursor;
 
-        setTypeList(typeArray);
-        data = parcel_list;
-      } else if (subTab === 'event') {
-        const res = await getDCLEventList(nextCursor.current, 10);
-        const { cursor, event_list } = res.data;
-        nextCursor.current = cursor;
+          if (event_list.length === 0) {
+            setNoData(true);
+          } else {
+            setNoData(false);
+          }
 
-        if (event_list.length === 0) {
-          setNoData(true);
-        } else {
-          setNoData(false);
+          data = event_list;
         }
-
-        data = event_list;
       }
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+      return [];
     }
 
     return convert(data);
@@ -128,30 +150,44 @@ export default function Index(props) {
 
   const onTabChange = async (tab) => {
     setTabState(tab);
-    const data = await requestData({ tab, subTab: subTabState, page: 1, query: '', type: '' });
+    const data = await requestData({
+      tab,
+      subTab: subTabState,
+      page: 1,
+      query: '',
+      type: '',
+      needUpdateTypeList: true,
+    });
     setDataSource(data);
   };
 
   const onSubTabChange = async (subTab) => {
     setSubTabState(subTab);
     // if (subTab === 'event') return;
-    const data = await requestData({ tab: tabState, subTab, page: 1, query: '', type: '' });
+    const data = await requestData({
+      tab: tabState,
+      subTab,
+      page: 1,
+      query: '',
+      type: '',
+      needUpdateTypeList: true,
+    });
     setDataSource(data);
   };
 
   const onTypeChangeHandler = React.useCallback(
-    (type: string) => {
+    async (type: string) => {
       setTypeState(type);
-      const rq = requestData({
+
+      const data = await requestData({
         tab: tabState,
         subTab: subTabState,
         page: 1,
         query: searchText,
         type,
       });
-      rq.then((data) => {
-        setDataSource(data);
-      });
+
+      setDataSource(data);
     },
     [tabState, subTabState, searchText],
   );
@@ -212,6 +248,18 @@ export default function Index(props) {
     [pageNumber, hasMore, tabState, subTabState, searchText, typeState, dataSource],
   );
 
+  const onRetry = React.useCallback(async () => {
+    const data = await requestData({
+      tab: tabState,
+      subTab: subTabState,
+      page: pageNumber,
+      query: searchText,
+      type: typeState,
+      needUpdateTypeList: true,
+    });
+    setDataSource(data);
+  }, [tabState, subTabState, pageNumber, searchText, typeState]);
+
   const init = React.useCallback(async () => {
     const data = await requestData({
       tab: tabState,
@@ -219,6 +267,7 @@ export default function Index(props) {
       page: 1,
       query: searchText,
       type: typeState,
+      needUpdateTypeList: true,
     });
     setDataSource(data);
   }, [props.query]);
@@ -277,9 +326,10 @@ export default function Index(props) {
                   onActive={onTypeChangeHandler}
                   tags={typeList}
                   label={typeList[0]?.name}
-                ></SwiperTag>
+                />
 
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
+                  {dataSource.length === 0 && <Status status={error ? 'error' : 'empty'} />}
                   {dataSource.map((card, idx) => {
                     return <Card {...card} key={idx}></Card>;
                   })}
@@ -289,11 +339,17 @@ export default function Index(props) {
                   pageNumber={pageNumber}
                   pageSize={9}
                   pageChange={onPageChangeHandler}
-                ></PagiNation>
+                />
               </>
             ) : (
               <div className="grid grid-cols-1 gap-8 my-7">
-                <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource}></PostGrid>
+                {dataSource.length === 0 ? (
+                  <Status status={error ? 'error' : 'empty'} />
+                ) : (
+                  error && <Status status="error" />
+                )}
+
+                <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
               </div>
             )}
           </div>
