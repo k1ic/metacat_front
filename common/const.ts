@@ -4,10 +4,8 @@ export const NAVIGATION = [
     route: '/',
   },
 ];
-export const SITE_NAME_MULTILINE = ['M7e'];
-export const SITE_NAME = 'M7e';
-export const SITE_URL = 'https://m7e.io';
-export const META_DESCRIPTION =
-  "This is M7e official website and Metaverse can't be built without NFTs.";
-export const SITE_DESCRIPTION =
-  "This is M7e official website and Metaverse can't be built without NFTs.";
+export const SITE_NAME_MULTILINE = ['MetaCat'];
+export const SITE_NAME = 'MetaCat';
+export const SITE_URL = 'https://metacat.work';
+export const META_DESCRIPTION = 'CATCH DATA, CATCH VALUE';
+export const SITE_DESCRIPTION = 'CATCH DATA, CATCH VALUE';
