@@ -45,6 +45,7 @@ class API {
 
     return json;
   }
+
   public async getDCLParcelList(
     page: number,
     count: number,
