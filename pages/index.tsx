@@ -72,7 +72,7 @@ export default function Index(props) {
     type,
     needUpdateTypeList = false,
   }): Promise<any[]> => {
-    let data;
+    let data = [];
     setLoading(true);
     setError(false);
 
@@ -136,11 +136,10 @@ export default function Index(props) {
         }
       }
     } catch (err) {
-      setLoading(false);
       setError(true);
-      return [];
     }
 
+    setLoading(false);
     return convert(data);
   };
 
@@ -211,18 +210,18 @@ export default function Index(props) {
   );
 
   const onSearchHandler = React.useCallback(
-    (text: string) => {
+    async (text: string) => {
       setSearchText(text);
-      const rq = requestData({
+      const data = await requestData({
         tab: tabState,
         subTab: subTabState,
         query: text,
         page: 1,
         type: typeState,
+        needUpdateTypeList: true,
       });
-      rq.then((data) => {
-        setDataSource(data);
-      });
+
+      setDataSource(data);
     },
     [tabState, subTabState, typeState],
   );
@@ -259,6 +258,71 @@ export default function Index(props) {
     });
     setDataSource(data);
   }, [tabState, subTabState, pageNumber, searchText, typeState]);
+
+  const renderContent = React.useMemo(() => {
+    if (subTabState === 'parcel') {
+      if (loading) {
+        return <Status status="loading" />;
+      }
+
+      if (error) {
+        return <Status retry={onRetry} status="error" />;
+      }
+
+      if (dataSource.length === 0) {
+        return <Status status="empty" />;
+      }
+
+      return (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
+            {dataSource.map((card, idx) => {
+              return <Card {...card} key={idx}></Card>;
+            })}
+          </div>
+          <PagiNation
+            total={totalPage}
+            pageNumber={pageNumber}
+            pageSize={9}
+            pageChange={onPageChangeHandler}
+          />
+        </>
+      );
+    }
+
+    if (subTabState === 'event') {
+      if (error) {
+        return (
+          <div className="grid grid-cols-1 gap-8 my-7">
+            <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
+
+            <Status retry={onRetry} status="error" />
+          </div>
+        );
+      }
+
+      if (dataSource.length === 0) {
+        return <Status status="empty" />;
+      }
+
+      return (
+        <div className="grid grid-cols-1 gap-8 my-7">
+          <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
+        </div>
+      );
+    }
+  }, [
+    subTabState,
+    error,
+    dataSource,
+    hasMore,
+    loadMore,
+    loading,
+    totalPage,
+    pageNumber,
+    onPageChangeHandler,
+    onRetry,
+  ]);
 
   const init = React.useCallback(async () => {
     const data = await requestData({
@@ -320,38 +384,11 @@ export default function Index(props) {
             {subTabState === 'parcel' ? <Search onSearch={onSearchHandler}></Search> : null}
           </div>
           <div className="mt-8">
-            {subTabState === 'parcel' ? (
-              <>
-                <SwiperTag
-                  onActive={onTypeChangeHandler}
-                  tags={typeList}
-                  label={typeList[0]?.name}
-                />
-                {dataSource.length === 0 && <Status status={error ? 'error' : 'empty'} />}
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
-                  {dataSource.map((card, idx) => {
-                    return <Card {...card} key={idx}></Card>;
-                  })}
-                </div>
-                <PagiNation
-                  total={totalPage}
-                  pageNumber={pageNumber}
-                  pageSize={9}
-                  pageChange={onPageChangeHandler}
-                />
-              </>
-            ) : (
-              <>
-                {dataSource.length === 0 ? (
-                  <Status status={error ? 'error' : 'empty'} />
-                ) : (
-                  error && <Status status="error" />
-                )}
-                <div className="grid grid-cols-1 gap-8 my-7">
-                  <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
-                </div>
-              </>
+            {subTabState === 'parcel' && (
+              <SwiperTag onActive={onTypeChangeHandler} tags={typeList} label={typeList[0]?.name} />
             )}
+
+            {renderContent}
           </div>
         </div>
       </Layout>
