@@ -24,7 +24,7 @@ export default function Status({ status, retry }: Props) {
         <span className="mt-4 text-white text-xl font-semibold">DATA LOADING FAILURE</span>
         <span
           className={cn(
-            'px-4 py-2 text-lg font-medium mt-5 flex justify-center items-center',
+            'px-4 py-2 text-lg font-medium mt-5 flex justify-center items-center cursor-pointer',
             style.retry,
           )}
           onClick={retry}
