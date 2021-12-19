@@ -3,7 +3,7 @@
   background: rgba(0, 236, 222, 0.05);
   /* 辅-亮绿 */
 
-  border: 0.5px solid #00d0ec;
+  border: 0.5px solid rgba(0, 208, 236, 0.5);
   box-sizing: border-box;
   box-shadow: inset 0px 0px 15px rgba(24, 255, 241, 0.3);
 }

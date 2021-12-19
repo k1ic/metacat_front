@@ -38,7 +38,9 @@ export default function Card({
       onClick={jumpToParcel}
     >
       <div className={style.imgContanier}>
-        <div className={cn('flex items-center justify-center text-xs', style.tag)}>{type}</div>
+        <div className={cn('flex items-center justify-center text-sm font-medium', style.tag)}>
+          {type}
+        </div>
         <img className={style.img} src={coverImgUrl || '/images/default-cover.png'} />
       </div>
       <div className={cn('p-5 flex-1', style.content)}>

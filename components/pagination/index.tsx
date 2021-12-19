@@ -58,14 +58,22 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
         activeClassName={styles.active}
         breakClassName={baseCls}
         breakLabel="..."
-        nextLabel={null}
+        nextLabel={
+          <div className={cn(styles.btn, baseCls)}>
+            <img className={cn(styles.icon)} src="/images/carousel-right.png"></img>
+          </div>
+        }
+        previousLabel={
+          <div className={cn(styles.btn, baseCls)}>
+            <img className={cn(styles.icon)} src="/images/carousel-left.png"></img>
+          </div>
+        }
         onPageChange={(event) => {
           handlePageClick(event.selected);
         }}
         pageRangeDisplayed={3}
         pageCount={pageCount}
         forcePage={currentItems}
-        previousLabel={null}
         renderOnZeroPageCount={null}
       />
       <div>

@@ -1,9 +1,16 @@
 .baseImg{
-  height: 150px;
+  width: 181px;
+  height: 120px;
 }
 .retry{
   width: 86px;
-height: 37px;
-background: #00D0EC;
-color: rgba(15, 25, 27, 1)
+  height: 37px;
+  background: #00D0EC;
+  color: rgba(15, 25, 27, 1)
+}
+
+.baseText{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: rgba(153, 153, 153, 1);
 }

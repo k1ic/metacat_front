@@ -8,7 +8,7 @@ interface Props {
   retry?: () => void;
 }
 export default function Status({ status, retry }: Props) {
-  const commonCls = 'flex w-full flex-col justify-center items-center py-10';
+  const commonCls = cn('flex w-full flex-col justify-center items-center py-10', style.baseText);
   if (status === 'loading') {
     return (
       <div className={cn(commonCls, 'animate-spin')}>
@@ -21,7 +21,7 @@ export default function Status({ status, retry }: Props) {
     return (
       <div className={cn(commonCls)}>
         <img src="/images/default-image.png" className={style.baseImg} />
-        <span className="mt-4 text-white text-xl font-semibold">DATA LOADING FAILURE</span>
+        <span className="mt-4 text-xl font-semibold">DATA LOADING FAILURE</span>
         <span
           className={cn(
             'px-4 py-2 text-lg font-medium mt-5 flex justify-center items-center cursor-pointer',
@@ -43,7 +43,7 @@ export default function Status({ status, retry }: Props) {
     return (
       <div className={cn(commonCls)}>
         <img src="/images/default-image.png" className={style.baseImg} />
-        <span className="mt-4 text-xl font-semibold text-white">NO DATA</span>
+        <span className="mt-4 text-xl font-semibold">NO DATA</span>
       </div>
     );
   }

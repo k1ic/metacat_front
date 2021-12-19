@@ -2,7 +2,7 @@
   position: relative;
 }
 .img{
-  height: 180px;
+  height: 200px;
 }
 .icon{
   width: 18px;
@@ -10,10 +10,9 @@
 }
 .slide{
   position:relative;
-  background-color: rgb(4, 46, 46);
 }
 .title{
-  height: 79px;
+  height: 60px;
   position:absolute;
   bottom: 0px;
   background-color: rgba(0, 208, 236, 0.2);
@@ -31,7 +30,7 @@
 .btn{
   width: 30px;
   height: 30px;
-  top: 75px;
+  top: 112px;
   position: absolute;
   background-color: rgba(17, 26, 27, 0.5);
   z-index: 100;

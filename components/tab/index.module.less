@@ -1,23 +1,37 @@
 .active {
   color: #fff;
+  font-size: 30px;
   background-color: rgba(0, 236, 222, 0.05);
-  border: 0.5px solid #00d0ec;
+  border: 0.5px solid rgba(0, 208, 236, 0.5);
   border-bottom: transparent;
 }
 
 .normal {
   color: #aaa;
-  border-bottom: 0.5px solid #00d0ec;
+  font-size: 26px;
+  border-bottom: 0.5px solid rgba(0, 208, 236, 0.5);
+}
+
+.base {
+  min-width: 300px;
+  padding: 0 30px;
 }
 
 .active > .canHover,
 .canHover:hover {
   color: #fff;
-  transform: scale(1.1);
+  //transform: scale(1.1);
+  font-size: 30px;
   cursor: pointer;
 }
+.active > .canHover > .tabIcon,
+.canHover:hover > .tabIcon {
+  width: 44px;
+  height: 44px;
+}
+
 .tabIcon {
-  width: 47px;
-  height: 47px;
+  width: 34px;
+  height: 34px;
   border-radius: 20px;
 }

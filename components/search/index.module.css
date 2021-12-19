@@ -81,9 +81,11 @@
 .searchIcon{
   width: 30px;
   height: 30px;
-  filter: contrast(0.5);
+  filter: contrast(0.0);
 }
 
-.active>.searchIcon ,.searchbtn:hover>.searchIcon,.searchbtn:active>.searchIcon{
+.active>.searchIcon ,
+.searchbtn:hover>.searchIcon,
+.searchbtn:active>.searchIcon{
   filter: none;
 }

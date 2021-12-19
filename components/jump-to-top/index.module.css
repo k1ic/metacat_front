@@ -1,0 +1,21 @@
+.topJumper {
+  position: fixed;
+  right: 11%;
+  bottom: 5%;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 236, 222, 0.1);
+  border-radius: 24px;
+  cursor: pointer;
+  color: rgba(221, 221, 221, 1);
+}
+.img{
+  width: 15px;
+  height: 20px;
+}
+.topJumper:hover{
+  filter: brightness(125%);
+}
+.topJumper:active{
+  filter: brightness(75%);
+}

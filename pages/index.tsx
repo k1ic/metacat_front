@@ -13,13 +13,14 @@ import PagiNation from '../components/pagination';
 import Search from '../components/search';
 import PostGrid from '../components/post-grid';
 import Status from '../components/status';
+import TopJumper from '../components/jump-to-top';
 
 import style from './index.module.less';
 import { getCVEventList, getCVParcelList, getDCLEventList, getDCLParcelList } from '../service';
 
 const TAB = [
   {
-    label: 'Crypto Voxel',
+    label: 'Cryptovoxel',
     icon: '/images/Crypto Voxel.jpg',
     type: 'voxel',
   },
@@ -78,7 +79,7 @@ export default function Index(props) {
     try {
       if (tab === 'voxel') {
         if (subTab === 'parcel') {
-          const res = await getCVParcelList(page, 9, query, type);
+          const res = await getCVParcelList(page, 50, query, type);
           const { parcel_list, total_page, type_total, page: currentPage } = res.data;
 
           const typeArray = Object.keys(type_total).map((key) => {
@@ -108,7 +109,7 @@ export default function Index(props) {
         }
       } else if (tab === 'decentraland') {
         if (subTab === 'parcel') {
-          const res = await getDCLParcelList(page, 9, query, type);
+          const res = await getDCLParcelList(page, 50, query, type);
           const { parcel_list, total_page, type_total, page: currentPage } = res.data;
 
           setTotalPage(total_page);
@@ -158,19 +159,22 @@ export default function Index(props) {
     setDataSource(data);
   };
 
-  const onSubTabChange = async (subTab) => {
-    setSubTabState(subTab);
+  const onSubTabChange = React.useCallback(
+    async (subTab) => {
+      setSubTabState(subTab);
 
-    const data = await requestData({
-      tab: tabState,
-      subTab,
-      page: 1,
-      query: '',
-      type: '',
-      needUpdateTypeList: true,
-    });
-    setDataSource(data);
-  };
+      const data = await requestData({
+        tab: tabState,
+        subTab,
+        page: 1,
+        query: searchText,
+        type: typeState,
+        needUpdateTypeList: true,
+      });
+      setDataSource(data);
+    },
+    [tabState, searchText, typeState],
+  );
 
   const onTypeChangeHandler = React.useCallback(
     async (type: string) => {
@@ -341,7 +345,7 @@ export default function Index(props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <div className="tab-list h-28 flex pt-6">
+        <div className={cn('tab-list flex pt-5', style.allHeight)}>
           <div className={cls}></div>
           <div className="main-content flex px-0">
             {TAB.map((item, index) => {
@@ -362,7 +366,7 @@ export default function Index(props) {
           <div className={cls} />
         </div>
         <div className="main-content">
-          <div className={cn('flex justify-between items-center', style.contentHeader)}>
+          <div className={cn('flex justify-between items-center pt-5', style.contentHeader)}>
             <div className="flex">
               {SUBTAB.map((item, index) => {
                 return (
@@ -387,6 +391,7 @@ export default function Index(props) {
             {renderContent}
           </div>
         </div>
+        {subTabState === 'parcel' ? null : <TopJumper></TopJumper>}
       </Layout>
     </Page>
   );

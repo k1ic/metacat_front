@@ -61,6 +61,10 @@ a {
   bottom: 0px !important;
 }
 
+.__react_component_tooltip::before, .__react_component_tooltip::after{
+  bottom: -7px !important;
+}
+
 .post-content {
   display: grid;
   grid-template-columns:

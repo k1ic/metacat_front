@@ -68,7 +68,7 @@ export default function Carousel({ imgs }: Props) {
               />
               <div
                 className={cn(
-                  'text-white w-full text-xl px-4 flex justify-center items-center font-medium truncate',
+                  'text-white w-full text-lg px-4 flex justify-start items-center font-medium truncate',
                   styles.title,
                 )}
               >

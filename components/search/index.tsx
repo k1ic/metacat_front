@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchInput, { createFilter } from 'react-search-input';
+import SearchInput from 'react-search-input';
 import cn from 'classnames';
 import style from './index.module.css';
 
@@ -31,6 +31,11 @@ export default function Search({ text, onSearch }: Props) {
           value={value}
           onChange={(e) => {
             setValue(e);
+          }}
+          onKeyDown={(e) => {
+            if (e.code === 'Enter') {
+              search();
+            }
           }}
           className={cn('relative search-input w-full h-full font-normal text-lg', style.search)}
         ></SearchInput>

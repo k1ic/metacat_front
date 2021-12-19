@@ -4,17 +4,22 @@
 
 .slide {
   width: auto !important;
-  color: rgba(221, 221, 221, 0.5);
+  color: rgba(221, 221, 221, 1);
   cursor: pointer;
   font-weight: 400;
 }
+
+.slide:hover{
+  color: rgba(255, 255, 255, 1) !important;
+  font-weight: 600;
+}
+
 .active,
-.slide:hover,
 .slide:active {
   background: rgba(0, 208, 236, 0.1);
   /* 辅-亮绿 */
-  border: 1px solid #00d0ec;
-  color: rgba(221, 221, 221, 1);
+  border: 1px solid rgba(0, 208, 236, 0.5);
+  color: rgba(255, 255, 255, 1) !important;
   border-radius: 2px;
   font-weight: 600;
 }
@@ -51,4 +56,14 @@
 }
 .icon:active{
   filter: brightness(75%);
+}
+
+.number{
+  color: rgba(153, 153, 153, 1);
+}
+
+.active> .number,
+.slide:hover> .number{
+  color: rgba(255, 255, 255, 1) !important;
+  font-weight: 600;
 }

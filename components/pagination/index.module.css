@@ -11,6 +11,15 @@
   height: 26px;
   text-align: center;
 }
+.btn{
+  min-width: 26px;
+  min-height: 26px;
+}
+
+.icon{
+  width: 18px;
+  height: 18px;
+}
 
 .baseBtn:hover,
 .active {
@@ -18,7 +27,7 @@
 }
 
 .active {
-  border: 0.5px solid #00d0ec;
+  border: 0.5px solid rgba(0, 208, 236, 0.5);
 }
 
 .jump {

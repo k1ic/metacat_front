@@ -58,6 +58,10 @@ export default function Layout({
   const activeRoute = router.asPath;
   const t = useTranslations('navigation');
 
+  const jumpToData = React.useCallback(() => {
+    window.open('https://www.k1ic.com/cvb-zh.html');
+  }, []);
+
   return (
     <>
       <div className={cn('min-h-screen', 'w-full')}>
@@ -70,11 +74,14 @@ export default function Layout({
           {!hideNav && (
             <header className={cn('main-content h-full flex justify-center items-center p-5')}>
               <div className="flex flex-grow items-center text-white font-bold text-3xl">
-                <Link href="/">METCAT</Link>
+                <Link href="/">METACAT</Link>
               </div>
               <div className="flex flex-grow justify-end">
-                <div className="text-lg font-medium text-white mx-28 cursor-pointer">Home</div>
-                <div className="text-lg font-medium text-gray-400 hover:text-white active:text-white cursor-pointer">
+                <div className="text-2xl font-medium text-white mx-28 cursor-pointer">Home</div>
+                <div
+                  className="text-2xl font-medium text-gray-400 hover:text-white active:text-white cursor-pointer"
+                  onClick={jumpToData}
+                >
                   Data
                 </div>
               </div>

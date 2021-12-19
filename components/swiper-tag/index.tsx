@@ -80,8 +80,8 @@ export default function SwiperTag({ tags = [], label, className, onActive }: Pro
                 activeTag(item);
               }}
             >
-              <span className="mr-1">{item.name}</span>
-              <span>{item.value}</span>
+              <span className={cn('mr-1')}>{item.name}</span>
+              <span className={styles.number}>{item.value}</span>
             </SwiperSlide>
           );
         })}
