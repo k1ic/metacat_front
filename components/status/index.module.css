@@ -1,3 +1,9 @@
 .baseImg{
   height: 150px;
 }
+.retry{
+  width: 86px;
+height: 37px;
+background: #00D0EC;
+color: rgba(15, 25, 27, 1)
+}
