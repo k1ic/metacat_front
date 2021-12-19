@@ -27,6 +27,8 @@ export default function Pagination({ total, pageNumber, pageSize, pageChange }: 
     setCurrentItems(pageNumber);
   }, [total, pageNumber]);
 
+  console.log('pagination', pageNumber, total, pageSize, currentItems);
+
   const jumpTopage = React.useCallback(
     (e) => {
       if (e.keyCode === 13) {
