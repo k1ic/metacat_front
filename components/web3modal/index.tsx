@@ -58,8 +58,8 @@ const state = new Rekv<IAppState>(INITIAL_STATE);
 
 export const ProviderContext = React.createContext<{
   data: IAppState | undefined;
-  connect: () => Promise<void>;
-  getAccountAssets: () => Promise<IAssetData[] | undefined>;
+  connect: () => Promise<IAssetData[] | undefined>;
+  getAccountAssets: (_address: string, _chainId: number) => Promise<IAssetData[] | undefined>;
   resetApp: () => Promise<IAppState>;
   // @ts-ignore
 }>({});
@@ -89,7 +89,6 @@ export default function Web3ModalProvider({
   options?: Options;
 }) {
   const web3ModalRef = React.useRef<Web3Modal>(null);
-  const [a, b] = React.useState();
 
   const value = state.useState(
     'fetching',
@@ -142,9 +141,10 @@ export default function Web3ModalProvider({
     }
     provider.on('close', () => resetApp());
     provider.on('accountsChanged', async (accounts: string[]) => {
-      const addr = accounts[0];
-      await state.setState({ address: addr });
-      await getAccountAssets(addr, chainId);
+      // eslint-disable-next-line no-underscore-dangle
+      const _address = accounts[0];
+      await state.setState({ address: _address });
+      await getAccountAssets(_address, chainId);
     });
     provider.on('chainChanged', async (cid: number) => {
       const id = +cid;
