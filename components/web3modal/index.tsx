@@ -110,7 +110,9 @@ export default function Web3ModalProvider({
   const getNetwork = (cid = chainId) => getChainData(cid)?.network;
 
   const resetApp = async () => {
+    // @ts-ignore
     if (web3 && web3.currentProvider && web3.currentProvider.close) {
+      // @ts-ignore
       await web3.currentProvider.close();
     }
 
