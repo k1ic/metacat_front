@@ -35,7 +35,11 @@ export default function Search({ text, onSearch }: Props) {
           className={cn('relative search-input w-full h-full font-normal text-lg', style.search)}
         ></SearchInput>
         {value ? (
-          <img className={cn('absolute', style.close)} src="/images/关闭.png" onClick={clear}></img>
+          <img
+            className={cn('absolute', style.close)}
+            src="/images/close.png"
+            onClick={clear}
+          ></img>
         ) : null}
       </div>
       <div
@@ -46,7 +50,7 @@ export default function Search({ text, onSearch }: Props) {
         )}
         onClick={search}
       >
-        <img className={style.searchIcon} src="/images/搜索-黑.png"></img>
+        <img className={style.searchIcon} src="/images/search.png"></img>
         Search
       </div>
     </div>

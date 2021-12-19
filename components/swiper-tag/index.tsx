@@ -52,7 +52,7 @@ export default function SwiperTag({ tags = [], label, className, onActive }: Pro
           styles.per,
         )}
       >
-        <img className={styles.icon} src="/images/tab切换-左.png"></img>
+        <img className={styles.icon} src="/images/tab-left.png"></img>
       </div>
       <Swiper
         modules={[Navigation]}
@@ -95,7 +95,7 @@ export default function SwiperTag({ tags = [], label, className, onActive }: Pro
           styles.next,
         )}
       >
-        <img className={styles.icon} src="/images/tab切换-右.png"></img>
+        <img className={styles.icon} src="/images/tab-right.png"></img>
       </div>
     </div>
   );

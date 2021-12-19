@@ -34,7 +34,7 @@ export default function Carousel({ imgs }: Props) {
   return (
     <div className={cn('w-full h-full', styles.swiper)}>
       <div className={cn('perbtn flex justify-center items-center', styles.btn, styles.perbtn)}>
-        <img className={styles.icon} src="/images/轮播图-左.png"></img>
+        <img className={styles.icon} src="/images/carousel-left.png"></img>
       </div>
       <Swiper
         className="h-full"
@@ -79,7 +79,7 @@ export default function Carousel({ imgs }: Props) {
         })}
       </Swiper>
       <div className={cn('nextbtn flex justify-center items-center', styles.btn, styles.nextbtn)}>
-        <img className={styles.icon} src="/images/轮播图-右.png"></img>
+        <img className={styles.icon} src="/images/carousel-right.png"></img>
       </div>
     </div>
   );

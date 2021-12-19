@@ -327,9 +327,8 @@ export default function Index(props) {
                   tags={typeList}
                   label={typeList[0]?.name}
                 />
-
+                {dataSource.length === 0 && <Status status={error ? 'error' : 'empty'} />}
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-7">
-                  {dataSource.length === 0 && <Status status={error ? 'error' : 'empty'} />}
                   {dataSource.map((card, idx) => {
                     return <Card {...card} key={idx}></Card>;
                   })}
@@ -342,15 +341,16 @@ export default function Index(props) {
                 />
               </>
             ) : (
-              <div className="grid grid-cols-1 gap-8 my-7">
+              <>
                 {dataSource.length === 0 ? (
                   <Status status={error ? 'error' : 'empty'} />
                 ) : (
                   error && <Status status="error" />
                 )}
-
-                <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
-              </div>
+                <div className="grid grid-cols-1 gap-8 my-7">
+                  <PostGrid loadMore={loadMore} hasMore={hasMore} events={dataSource} />
+                </div>
+              </>
             )}
           </div>
         </div>

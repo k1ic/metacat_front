@@ -55,7 +55,7 @@ export default function EventCard({
 
   return (
     <div className={cn('p-5 flex', className, style.card)} onClick={jumpToDetail}>
-      <img className={style.cover} src={coverImg || '/images/默认图片-方形.png'} />
+      <img className={style.cover} src={coverImg || '/images/default.png'} />
       <div className={cn('flex-1 ', style.content)}>
         <div className={cn('flex h-auto justify-between items-center text-white')}>
           <div>
