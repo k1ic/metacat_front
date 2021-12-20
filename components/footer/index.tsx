@@ -47,7 +47,7 @@ export default function Footer() {
           <ReactTooltip
             id="code"
             effect="solid"
-            textColor="rgba(0, 0, 0, 1)"
+            textColor="#ccc"
             className={style.pop}
             backgroundColor="rgba(0, 208, 236, 0.2)"
             border={false}
@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
       <ReactTooltip
         effect="solid"
-        textColor="rgba(0, 0, 0, 1)"
+        textColor="#ccc"
         className={style.pop}
         backgroundColor="rgba(0, 208, 236, 0.2)"
         border={false}

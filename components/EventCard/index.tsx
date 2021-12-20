@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import style from './index.module.css';
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
   eventParcelUrl?: string;
   className?: string;
 };
+
+dayjs.extend(utc);
 
 export default function EventCard({
   name,
@@ -44,8 +47,8 @@ export default function EventCard({
     if (!start || !end) {
       return false;
     }
-    const time1 = dayjs(start);
-    const time2 = dayjs(end);
+    const time1 = dayjs.utc(start);
+    const time2 = dayjs.utc(end);
     const n = Date.now();
     if (time1.valueOf() <= n && time2.valueOf() >= n) {
       return true;

@@ -87,8 +87,8 @@ export default function Index(props) {
             return { name: key, value };
           });
 
+          // setPageNumber(currentPage);
           setTotalPage(total_page);
-          setPageNumber(currentPage);
 
           if (needUpdateTypeList) {
             setTypeList(typeArray);
@@ -112,8 +112,8 @@ export default function Index(props) {
           const res = await getDCLParcelList(page, 50, query, type);
           const { parcel_list, total_page, type_total, page: currentPage } = res.data;
 
+          // setPageNumber(currentPage);
           setTotalPage(total_page);
-          setPageNumber(currentPage);
 
           const typeArray = Object.keys(type_total).map((key) => {
             const value = type_total[key];
@@ -148,6 +148,11 @@ export default function Index(props) {
 
   const onTabChange = async (tab) => {
     setTabState(tab);
+    setSearchText('');
+    setTypeState('all');
+
+    nextCursor.current = 1;
+
     const data = await requestData({
       tab,
       subTab: subTabState,
@@ -162,6 +167,8 @@ export default function Index(props) {
   const onSubTabChange = React.useCallback(
     async (subTab) => {
       setSubTabState(subTab);
+      setSearchText('');
+
       const data = await requestData({
         tab: tabState,
         subTab,
@@ -202,7 +209,7 @@ export default function Index(props) {
         query: searchText,
         type: typeState,
       });
-
+      setPageNumber(requestNumber);
       setDataSource(data);
     },
     [tabState, subTabState, typeState, searchText],
@@ -380,11 +387,13 @@ export default function Index(props) {
                 );
               })}
             </div>
-            {subTabState === 'parcel' ? <Search onSearch={onSearchHandler}></Search> : null}
+            {subTabState === 'parcel' ? (
+              <Search text={searchText} onSearch={onSearchHandler}></Search>
+            ) : null}
           </div>
           <div className="mt-8">
             {subTabState === 'parcel' && (
-              <SwiperTag onActive={onTypeChangeHandler} tags={typeList} label={typeList[0]?.name} />
+              <SwiperTag onActive={onTypeChangeHandler} tags={typeList} label={typeState} />
             )}
 
             {renderContent}

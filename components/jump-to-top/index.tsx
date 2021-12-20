@@ -15,7 +15,7 @@ export default function TopJumper() {
 
   return show ? (
     <div
-      className={cn('flex flex-col justify-evenly items-center', style.topJumper)}
+      className={cn('flex flex-col justify-center items-center', style.topJumper)}
       onClick={() => window.scrollTo(0, 0)}
     >
       <img src="/images/jump-top.png" className={style.img}></img>

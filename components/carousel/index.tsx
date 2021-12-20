@@ -53,11 +53,11 @@ export default function Carousel({ imgs }: Props) {
           },
         }}
       >
-        {imgs.map((slide) => {
+        {imgs.map((slide, idx) => {
           return (
             <SwiperSlide
               className={cn('w-full h-full', styles.slide)}
-              key={slide.title}
+              key={idx}
               onClick={() => {
                 jumpToDetail(slide.detailUrl);
               }}
@@ -68,7 +68,7 @@ export default function Carousel({ imgs }: Props) {
               />
               <div
                 className={cn(
-                  'text-white w-full text-lg px-4 flex justify-start items-center font-medium truncate',
+                  'text-white w-full text-lg px-4 flex justify-start pt-3 font-medium truncate',
                   styles.title,
                 )}
               >
