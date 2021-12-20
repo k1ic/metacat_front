@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchInput from 'react-search-input';
 import cn from 'classnames';
 import style from './index.module.css';
@@ -23,6 +23,11 @@ export default function Search({ text, onSearch }: Props) {
       onSearch(value);
     }
   }, [show, value]);
+
+  useEffect(() => {
+    setValue(text);
+  }, [text]);
+
   return (
     <div className="flex w-auto items-center">
       <div className={cn('relative', show ? style.searchContainer : style.toggle)}>

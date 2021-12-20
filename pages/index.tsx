@@ -148,6 +148,7 @@ export default function Index(props) {
 
   const onTabChange = async (tab) => {
     setTabState(tab);
+    setSearchText('');
     const data = await requestData({
       tab,
       subTab: subTabState,
@@ -162,6 +163,7 @@ export default function Index(props) {
   const onSubTabChange = React.useCallback(
     async (subTab) => {
       setSubTabState(subTab);
+      setSearchText('');
 
       const data = await requestData({
         tab: tabState,
@@ -381,7 +383,9 @@ export default function Index(props) {
                 );
               })}
             </div>
-            {subTabState === 'parcel' ? <Search onSearch={onSearchHandler}></Search> : null}
+            {subTabState === 'parcel' ? (
+              <Search text={searchText} onSearch={onSearchHandler}></Search>
+            ) : null}
           </div>
           <div className="mt-8">
             {subTabState === 'parcel' && (

@@ -38,7 +38,7 @@ export default function SwiperTag({ tags = [], label, className, onActive }: Pro
         onActive(item.name);
       }
     },
-    [null],
+    [onActive],
   );
 
   return (
