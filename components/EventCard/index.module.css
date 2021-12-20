@@ -20,6 +20,7 @@
 }
 
 .content{
+  width: calc(100% - 140px);
   background: rgba(0, 0, 0, 0.2);
   padding: 20px 40px 20px 20px;
 }

@@ -52,17 +52,17 @@ export default function EventCard({
     }
     return false;
   }, [activityTime]);
-
+  const hasEntry = inTimeLine();
   return (
     <div className={cn('p-5 flex', className, style.card)} onClick={jumpToDetail}>
       <img className={style.cover} src={coverImg || '/images/default.png'} />
       <div className={cn('flex-1 ', style.content)}>
         <div className={cn('flex h-auto justify-between items-center text-white')}>
-          <div>
+          <div className={hasEntry ? 'w-11/12' : 'w-full'}>
             <div className={cn('text-xl font-semibold truncate', style.header)}>{name}</div>
             <div className={cn('text-base', style.time)}>Activity time：{activityTime}</div>
           </div>
-          {inTimeLine() ? (
+          {hasEntry ? (
             <div
               className={cn('text-sm flex justify-center items-center', style.btn)}
               onClick={jumpToParcel}

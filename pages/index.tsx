@@ -162,7 +162,6 @@ export default function Index(props) {
   const onSubTabChange = React.useCallback(
     async (subTab) => {
       setSubTabState(subTab);
-
       const data = await requestData({
         tab: tabState,
         subTab,
