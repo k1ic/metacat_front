@@ -149,6 +149,9 @@ export default function Index(props) {
   const onTabChange = async (tab) => {
     setTabState(tab);
     setSearchText('');
+
+    nextCursor.current = 1;
+
     const data = await requestData({
       tab,
       subTab: subTabState,

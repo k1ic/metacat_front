@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
+import { convert } from '../../common/utils';
 import MobileMenu from '../mobile-menu';
 import SwitchLocale from '../switch-locale';
 import { NAVIGATION } from '../../common/const';
@@ -55,12 +56,22 @@ export default function Layout({
   extra,
 }: Props) {
   const router = useRouter();
+  const [carouselList, setCarouselList] = React.useState([]);
   const activeRoute = router.asPath;
   const t = useTranslations('navigation');
 
   const jumpToData = React.useCallback(() => {
     window.open('https://www.k1ic.com/cvb-zh.html');
   }, []);
+
+  React.useEffect(() => {
+    fetch('/api/carousel').then(async (res) => {
+      const data = await res.json();
+
+      const { list } = data.data || [];
+      setCarouselList(convert(list));
+    });
+  }, [null]);
 
   return (
     <>
@@ -96,7 +107,7 @@ export default function Layout({
               </div>
             </div>
             <div className={cn('image-round', style.roundImage)}>
-              <Carousel imgs={test}></Carousel>
+              <Carousel imgs={carouselList}></Carousel>
             </div>
           </div>
         </div>
